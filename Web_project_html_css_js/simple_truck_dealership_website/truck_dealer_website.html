@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta & Fonts -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="GK Transports - Authorized Tata truck dealership with latest models, specs, prices, and live GPS tracking."/>
+  <title>GK TRANSPORTS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #111 url('https://st2.depositphotos.com/1433239/48066/i/450/depositphotos_480669672-stock-photo-truck-moves-suburban-highway-sunset.jpg') center/cover fixed;
+      color: #fff;
+    }
+
+    /* Header */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .brand .logo {
+      background: #ff9800;
+      color: #fff;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* Menu Button */
+    .menu-btn {
+      background: #ff9800;
+      border: none;
+      color: #fff;
+      padding: 8px 14px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Sidebar */
+    aside.site-nav {
+      position: fixed;
+      inset: 0 auto 0 0; /* top:0, right:auto, bottom:0, left:0 */
+      width: var(--sidebar-w);
+      background: #0e0e0e;
+      border-right: 1px solid #222;
+      transform: translateX(-100%);
+      transition: transform .28s ease;
+      z-index: 1002;
+      display: flex;
+      flex-direction: column;
+    }
+     /* Sidebar */
+    aside {
+      position: fixed;
+      top: 0;
+      left: -250px; /* hidden by default */
+      width: 250px;
+      height: 100%;
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    aside nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    aside nav ul li {
+      margin: 15px 0;
+    }
+
+    aside nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    aside nav ul li a:hover {
+      color: #ff9800;
+    }
+
+    /* Show sidebar when active */
+    aside.active {
+      left: 0;
+    }
+
+    /* Main content */
+    main {
+      padding: 20px;
+    }
+
+    /* Optional overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 998;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Small helpers */
+    .muted { color: var(--muted); font-size: 14px; }
+
+    section {
+      padding: 80px 20px 40px;
+      margin: auto;
+      max-width: 1200px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      font-weight: 900;
+      color: #ffcc00;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Video Container */
+    .video-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .video-container iframe {
+      border-radius: 10px;
+      max-width: 100%;
+      height: 300px;
+    }
+
+    /* Moving Gallery */
+.gallery-container {
+  overflow: hidden;
+  width: 100%;
+  background: #111;
+  padding: 20px 0;
+}
+
+.gallery-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.gallery-track figure {
+  flex: 0 0 auto;
+  margin: 0 15px;
+  text-align: center;
+  width: 250px;
+  color: white;
+}
+
+.gallery-track img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.gallery-track figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: gold;
+}
+
+/* scrolling effect */
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+    /* Truck Cards */
+    .truck-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .truck-card {
+      flex: 1 1 calc(50% - 20px);
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+    .truck-card img {
+      width: 40%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .truck-info {
+      width: 60%;
+    }
+    .truck-card h3 {
+      font-weight: 800;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    .truck-card ul {
+      text-align: left;
+      font-size: 15px;
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+    .truck-card ul li {
+      margin-bottom: 5px;
+    }
+
+    /* Finance */
+    #finance {
+      padding: 40px 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      margin-top: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 30px;
+      color: #ffcc00;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 16px;
+      color: #ffcc00;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      font-size: 16px;
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #ffcc00;
+      border-radius: 5px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #ff9900;
+    }
+
+    small {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .emi-result {
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .note strong {
+      color: #ffcc00;
+    }
+
+    /* Parts & Accessories Section */
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+    .accessories-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+      height: auto;
+    }
+    .product-card h3 {
+      margin-top: 15px;
+      color: #fff;
+    }
+    .product-card p {
+      color: #bbb;
+    }
+    .selection-options {
+      margin-top: 15px;
+    }
+    .selection-options select,
+    .selection-options input {
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: 1px solid #444;
+      width: 100%;
+      background: #111;
+      color: #eee;
+    }
+    button {
+      background-color: gold;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+    }
+    button:hover {
+      background-color: #d4af37;
+    }
+    .cart-summary {
+      margin-top: 40px;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    }
+    .cart-summary h3 {
+      margin-bottom: 20px;
+      color: gold;
+    }
+    .cart-summary ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .cart-summary ul li {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #eee;
+    }
+    .cart-summary .total {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 20px;
+      color: gold;
+    }
+    .booking-section {
+      margin-top: 30px;
+      background-color: #111;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .booking-section input[type="datetime-local"] {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background: #222;
+      color: #eee;
+    }
+
+    @media(max-width: 768px) {
+      #finance {
+        padding: 20px;
+        width: 90%;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .truck-card {
+        flex: 1 1 100%;
+        flex-direction: column;
+      }
+      .truck-card img, .truck-info { 
+        width: 100%; 
+      }
+      .gallery figure { 
+        width: 180px; 
+      }
+    }
+
+    /* Map */
+    .map-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+    iframe.map {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* Contact Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+      margin: auto;
+    }
+    input, textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      background: #ff9900;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background: #e68a00;
+    }
+
+    /* FAQ Section */
+    .faq-item {
+      margin-bottom: 15px;
+    }
+    .faq-question {
+      background-color: #ffcc00;
+      color: #111;
+      padding: 15px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .faq-answer {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      display: none;
+    }
+    .faq-question:hover {
+      background-color: #ff9900;
+    }
+
+    footer {
+      text-align: center;
+      background: rgba(0,0,0,0.85);
+      padding: 15px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header" role="banner" 
+        style="position: fixed; top: 0; left: 0; width: 100%; 
+               background: #222222; color: #fff; 
+               display: flex; justify-content: center; align-items: center; 
+               padding: 10px 20px; z-index: 1000;">
+  
+  <!-- Brand -->
+  <div class="brand" aria-label="GK Transports" 
+       style="font-size: 1.5rem; font-weight: bold;">
+    <div class="logo" style="display:inline-block; margin-right:8px;">GK</div>
+    GK Transports
+  </div>
+
+  <!-- Menu Button -->
+  <button id="menuBtn" 
+          class="menu-btn" 
+          aria-controls="siteNav" 
+          aria-expanded="false" 
+          style="width: 8%; height: auto; position: absolute; left: 20px; background:none; border:none; color:#fff; background: #ff9800;font-size:1rem; cursor:pointer;">
+    ☰ Menu
+  </button>
+</header>
+  <!-- Dark overlay -->
+  <div id="overlay" class="overlay"></div>
+  <!-- Sidebar Navigation -->
+  <aside id="siteNav">
+  <nav>
+    <ul>
+      <h1>Menue</h1>
+      <li><a href="#intro">👋 Intro</a></li>
+      <li><a href="#gallery">🖼 Gallery</a></li>
+      <li><a href="#trucks">🚚 Trucks</a></li>
+      <li><a href="#stock-status">📦 Stock Status</a></li>
+      <li><a href="#finance">💰 Finance</a></li>
+      <li><a href="#compare">⚖️ Compare</a></li>
+      <li><a href="#service">🛠 Service</a></li>
+      <li><a href="#parts">⚙️ Parts</a></li>
+      <li><a href="#map">🗺 Map</a></li>
+      <li><a href="#faq">❓ FAQ</a></li>
+      <li><a href="#contact">📞 Contact</a></li>
+    </ul>
+  </nav>
+</aside>
+
+
+    <!-- Script -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const siteNav = document.getElementById("siteNav");
+    const overlay = document.getElementById("overlay");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = siteNav.classList.toggle("active");
+      overlay.classList.toggle("active", isOpen);
+      menuBtn.setAttribute("aria-expanded", isOpen);
+    });
+
+    // Close nav if overlay clicked
+    overlay.addEventListener("click", () => {
+      siteNav.classList.remove("active");
+      overlay.classList.remove("active");
+      menuBtn.setAttribute("aria-expanded", false);
+    });
+  </script>
+
+<section id="intro">
+  <h1>GK TRUCK DEALERSHIP</h1>
+  <p>Authorized Tata Motors dealer delivering India’s most reliable commercial trucks.  
+  We offer heavy-duty haulage, tippers, and long-haul solutions — now with live GPS tracking to keep your business moving efficiently.</p>
+
+  <!-- YouTube Video -->
+<div class="video-container">
+  <iframe width="560" height="315"
+  src="https://www.youtube.com/embed/G01-eVi-0z4?autoplay=1&mute=1"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+</div>
+
+</section>
+
+<section id="gallery">
+  <h2>Truck Gallery</h2>
+  <div class="gallery-container">
+    <div class="gallery-track">
+      
+      <figure>
+        <img src="https://trucks.tatamotors.com/assets/trucks/files/Prima-5530_0.jpg" alt="Prima FL 5530.S">
+        <figcaption>Prima FL 5530.S</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="https://trucks.tatamotors.com/assets/trucks/files/Products/2024-02/Signa%204930.jpg" alt="Signa 4930.T">
+        <figcaption>Signa 4930.T</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="https://truckcdn.cardekho.com/in/tata/signa-3525-k-tk/tata-signa-3525-k-tk-85358.jpg" alt="Signa 3525.K">
+        <figcaption>Signa 3525.K</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="https://trucks.tatamotors.com/assets/trucks/files/LPT-1916-Leaflet-English-AW-CTC.jpg" alt="1916 LPT">
+        <figcaption>1916 LPT</figcaption>
+      </figure>
+
+      <!-- duplicate images for infinite loop -->
+      <figure>
+        <img src="https://trucks.tatamotors.com/assets/trucks/files/Prima-5530_0.jpg" alt="Prima FL 5530.S">
+        <figcaption>Prima FL 5530.S</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="https://trucks.tatamotors.com/assets/trucks/files/Products/2024-02/Signa%204930.jpg" alt="Signa 4930.T">
+        <figcaption>Signa 4930.T</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="https://truckcdn.cardekho.com/in/tata/signa-3525-k-tk/tata-signa-3525-k-tk-85358.jpg" alt="Signa 3525.K">
+        <figcaption>Signa 3525.K</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="https://trucks.tatamotors.com/assets/trucks/files/LPT-1916-Leaflet-English-AW-CTC.jpg" alt="1916 LPT">
+        <figcaption>1916 LPT</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="trucks">
+  <h2>Our TATA Truck Models</h2>
+  <div class="truck-list">
+    <div class="truck-card">
+      <img src="https://trucks.tatamotors.com/assets/trucks/files/Prima-5530_0.jpg">
+      <div class="truck-info">
+        <h3>Tata Prima FL 5530.S</h3>
+        <ul>
+          <li>Engine: 6.7L Cummins ISBe, 300 hp, 1100 Nm</li>
+          <li>GVW: 55,000 kg ● Payload: 40 t</li>
+          <li>Fuel Tank: 557 L ● Gradeability: ~15.6%</li>
+          <li>Price: ₹42.32 Lakh</li>
+        </ul>
+      </div>
+    </div>
+    <div class="truck-card">
+      <img src="https://trucks.tatamotors.com/assets/trucks/files/Products/2024-02/Signa%204930.jpg">
+      <div class="truck-info">
+        <h3>Tata Signa 4930.T</h3>
+        <ul>
+          <li>Engine: 6.7L Cummins ISBe, 300 hp, 1100 Nm</li>
+          <li>GVW: 49,000 kg ● Wheels: 16</li>
+          <li>Fuel Tank: 365 L ● Wheelbase: 6800 mm</li>
+          <li>Price: ₹47–48 Lakh</li>
+        </ul>
+      </div>
+    </div>
+    <div class="truck-card">
+      <img src="https://truckcdn.cardekho.com/in/tata/signa-3525-k-tk/tata-signa-3525-k-tk-85358.jpg">
+      <div class="truck-info">
+        <h3>Tata Signa 3525.K/TK</h3>
+        <ul>
+          <li>Engine: Cummins, 250 hp, 950 Nm</li>
+          <li>GVW: 35,000 kg ● 9-speed gearbox</li>
+          <li>Tipper ready ● Price: ₹45–52 Lakh</li>
+        </ul>
+      </div>
+    </div>
+    <div class="truck-card">
+      <img src="https://trucks.tatamotors.com/assets/trucks/files/LPT-1916-Leaflet-English-AW-CTC.jpg">
+      <div class="truck-info">
+        <h3>Tata 1916 LPT</h3>
+        <ul>
+          <li>Engine: 3.3L NG, 160 hp, 475 Nm</li>
+          <li>GVW: 18,500 kg ● Fuel Tank: 160–250 L</li>
+          <li>Variants: Sleeper/Chassis, Body up to 32 ft</li>
+          <li>Price: ₹27.5–29.3 Lakh</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stock-status">
+  <h2>Truck Availability</h2>
+  <table style="width:100%; margin-top: 20px; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr>
+        <th style="background-color: #ffcc00; padding: 10px;">Truck Model</th>
+        <th style="background-color: #ffcc00; padding: 10px;">Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background-color: #111; padding: 10px; color: #fff;">Tata Prima FL 5530.S</td>
+        <td style="background-color: #111; padding: 10px; color: green;">In Stock</td>
+      </tr>
+      <tr>
+        <td style="background-color: #111; padding: 10px; color: #fff;">Tata Signa 4930.T</td>
+        <td style="background-color: #111; padding: 10px; color: green;">In Stock</td>
+      </tr>
+      <tr>
+        <td style="background-color: #111; padding: 10px; color: #fff;">Tata Signa 3525.K/TK</td>
+        <td style="background-color: #111; padding: 10px; color: rgb(255, 0, 0);">Out of Stock</td>
+      </tr>
+      <tr>
+        <td style="background-color: #111; padding: 10px; color: #fff;">Tata 1916 LPT</td>
+        <td style="background-color: #111; padding: 10px; color: green;">In Stock</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="finance">
+  <h2>Finance Calculator</h2>
+  <p style="text-align:center; font-size:18px; color:#ffcc00;">Estimate your monthly EMI for your truck loan</p>
+  
+  <form oninput="emi.value = ((amount.value * interest.value / 1200) / (1 - (1 + interest.value / 1200) ** (-months.value))).toFixed(2)">
+    <!-- Truck Price Input -->
+    <div class="input-group">
+      <label for="amount">Truck Price (₹):</label>
+      <input type="number" id="amount" placeholder="Enter Truck Price"  title="Enter the truck price in ">
+      <small>Enter the price of the truck you wish to finance.</small>
+    </div>
+
+    <!-- Interest Rate Input -->
+    <div class="input-group">
+      <label for="interest">Interest Rate (%):</label>
+      <input type="number" id="interest" placeholder="Enter Interest Rate" required min="1" max="30" step="0.1" title="Enter the annual interest rate (between 1% to 30%)">
+      <small>Annual interest rate applied by the lender.</small>
+    </div>
+
+    <!-- Loan Duration Input -->
+    <div class="input-group">
+      <label for="months">Loan Duration (months):</label>
+      <input type="number" id="months" placeholder="Enter Loan Duration" required min="12" max="120" title="Enter loan duration in months (minimum 12 months)">
+      <small>Choose your loan duration (12 to 120 months).</small>
+    </div>
+    
+    <!-- EMI Output -->
+    <div class="emi-result">
+      <p style="font-size:18px; color:#fff;">Estimated EMI: ₹<output name="emi" for="amount interest months">0</output></p>
+    </div>
+
+    <div class="note">
+      <p><strong>Note:</strong> The EMI calculation is an estimate. Actual values may vary based on your loan terms and conditions.</p>
+    </div>
+  </form>
+</section>
+
+<section id="compare" style="max-width:600px; margin: 30px auto; padding: 20px; background:#333333c9; border-radius:8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+  <h2 style="text-align:center; color:#ffcc00;">Compare Truck Models</h2>
+  <form style="display:flex; flex-direction: column; gap: 15px; align-items: center;">
+    <div style="width: 100%;">
+      <label for="truck1" style="font-weight:600; margin-bottom:5px; display:block;">Select First Truck:</label>
+      <select id="truck1" style="width:100%; padding:10px; font-size:16px;">
+        <option value="" disabled selected>Select a truck model</option>
+        <option value="Prima 5530">Tata Prima 5530</option>
+        <option value="Signa 4930">Tata Signa 4930</option>
+        <option value="Signa 3525">Tata Signa 3525</option>
+        <option value="LPT 1916">Tata LPT 1916</option>
+      </select>
+    </div>
+    
+    <div style="width: 100%;">
+      <label for="truck2" style="font-weight:600; margin-bottom:5px; display:block;">Select Second Truck:</label>
+      <select id="truck2" style="width:100%; padding:10px; font-size:16px;">
+        <option value="" disabled selected>Select a truck model</option>
+        <option value="Prima 5530">Tata Prima 5530</option>
+        <option value="Signa 4930">Tata Signa 4930</option>
+        <option value="Signa 3525">Tata Signa 3525</option>
+        <option value="LPT 1916">Tata LPT 1916</option>
+      </select>
+    </div>
+    
+    <button type="button" onclick="compareTrucks()" style="padding: 12px 25px; font-size:16px; background:#ffcc00; border:none; border-radius:5px; cursor:pointer; transition: background 0.3s;">
+      Compare
+    </button>
+  </form>
+
+  <div id="comparisonResult" style="margin-top:25px; text-align:center; font-size:18px; color:#ffffff;"></div>
+</section>
+
+<script>
+  function compareTrucks() {
+    const truck1 = document.getElementById('truck1').value;
+    const truck2 = document.getElementById('truck2').value;
+    const resultDiv = document.getElementById('comparisonResult');
+
+    if (!truck1 || !truck2) {
+      resultDiv.style.color = 'red';
+      resultDiv.textContent = "Please select both truck models to compare.";
+      return;
+    }
+
+    if (truck1 === truck2) {
+      resultDiv.style.color = 'red';
+      resultDiv.textContent = "Please select two different truck models.";
+      return;
+    }
+
+    // Dummy data for demo
+    const specs = {
+      "Prima 5530": { engine: "6.75L, 320 HP", mileage: "3.5 km/l", price: "₹ 55 Lakhs" },
+      "Signa 4930": { engine: "5.9L, 280 HP", mileage: "4 km/l", price: "₹ 42 Lakhs" },
+      "Signa 3525": { engine: "5.9L, 250 HP", mileage: "4.2 km/l", price: "₹ 38 Lakhs" },
+      "LPT 1916": { engine: "4.6L, 160 HP", mileage: "5 km/l", price: "₹ 25 Lakhs" },
+    };
+
+    const t1 = specs[truck1];
+    const t2 = specs[truck2];
+
+    // ✅ Fixed: use backticks for template literal
+    resultDiv.style.color = '#ffffff';
+    resultDiv.innerHTML = `
+      <table style="margin: auto; border-collapse: collapse; width: 100%; max-width: 500px;">
+        <thead>
+          <tr style="background:#ffcc00; color:#000;">
+            <th style="padding: 10px; border: 1px solid #ccc;">Feature</th>
+            <th style="padding: 10px; border: 1px solid #ccc;">${truck1}</th>
+            <th style="padding: 10px; border: 1px solid #ccc;">${truck2}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">Engine</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">${t1.engine}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">${t2.engine}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">Mileage</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">${t1.mileage}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">${t2.mileage}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">Price</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">${t1.price}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">${t2.price}</td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+  }
+</script>
+
+
+<section id="service">
+  <h2>Book a Service</h2>
+  <form>
+    <input type="text" placeholder="Full Name" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="text" placeholder="Truck Model (e.g., Signa 4930)">
+    <input type="date" placeholder="Preferred Date" required>
+    <input type="time" placeholder="Preferred Time" required>
+    <textarea placeholder="Additional Notes (optional)"></textarea>
+    <input type="submit" value="Book Service">
+  </form>
+</section>
+
+<!-- Parts & Accessories Section -->
+<section id="parts">
+  <h2>Parts & Accessories</h2>
+  <div class="container">
+    <!-- Product Gallery -->
+    <div class="accessories-gallery">
+      <!-- Truck Engine Filter -->
+      <div class="product-card">
+        <img src="https://www.vikingsauto.in/wp-content/uploads/2022/01/preview-2022-01-18T122801.366-600x400.jpeg" alt="Truck Engine Filter">
+        <h3>Truck Engine Filter</h3>
+        <p>High-performance air filter for trucks.</p>
+        <p>Price: ₹12000</p>
+        <div class="selection-options">
+          <label for="quantity1">Quantity:</label>
+          <input type="number" id="quantity1" min="1" value="1">
+          <label for="vehicle1">Select Vehicle Model:</label>
+          <select id="vehicle1">
+            <option value="modelA">Tata Prima</option>
+            <option value="modelB">Tata Signa</option>
+            <option value="modelC">Tata 1916 LPT</option>
+          </select>
+          <button onclick="addToCart(1)">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Truck Tyre -->
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/NH/EK/MY-51680516/resole-truck-tyre.jpg" alt="Truck Tyre">
+        <h3>Truck Tyre</h3>
+        <p>Durable and reliable tyres for all models.</p>
+        <p>Price: ₹20000</p>
+        <div class="selection-options">
+          <label for="quantity2">Quantity:</label>
+          <input type="number" id="quantity2" min="1" value="1">
+          <label for="vehicle2">Select Vehicle Model:</label>
+          <select id="vehicle2">
+            <option value="modelA">Tata Prima</option>
+            <option value="modelB">Tata Signa</option>
+            <option value="modelC">Tata 1916 LPT</option>
+          </select>
+          <button onclick="addToCart(2)">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Truck Accessory Kit -->
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/QT/QF/MY-3530642/tata-truck-metal-body-parts-500x500.jpg" alt="Truck Accessory Kit">
+        <h3>Truck Accessory Kit</h3>
+        <p>Comprehensive maintenance kit.</p>
+        <p>Price: ₹9990</p>
+        <div class="selection-options">
+          <label for="quantity3">Quantity:</label>
+          <input type="number" id="quantity3" min="1" value="1">
+          <label for="vehicle3">Select Vehicle Model:</label>
+          <select id="vehicle3">
+            <option value="modelA">Tata Prima</option>
+            <option value="modelB">Tata Signa</option>
+            <option value="modelC">Tata 1916 LPT</option>
+          </select>
+          <button onclick="addToCart(3)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+      <h3>Your Cart</h3>
+      <ul id="cart-summary-list"></ul>
+      <p class="total" id="total-price">Total: ₹0</p>
+    </div>
+
+    <!-- Booking Section -->
+    <div class="booking-section">
+      <h3>Book Installation</h3>
+      <p>Select a date and time for installation:</p>
+      <input type="datetime-local" id="booking-time">
+      <button onclick="bookInstallation()">Book Installation</button>
+    </div>
+  </div>
+</section>
+
+<!-- Scripts -->
+<script>
+  // Cart object
+  let cart = [];
+
+  // Add product to cart
+  function addToCart(productId) {
+    let quantity, price, productName, vehicleModel;
+    if (productId === 1) {
+      quantity = document.getElementById('quantity1').value;
+      productName = "Truck Engine Filter";
+      price = 12000;
+      vehicleModel = document.getElementById('vehicle1').value;
+    } else if (productId === 2) {
+      quantity = document.getElementById('quantity2').value;
+      productName = "Truck Tyre";
+      price = 20000;
+      vehicleModel = document.getElementById('vehicle2').value;
+    } else if (productId === 3) {
+      quantity = document.getElementById('quantity3').value;
+      productName = "Truck Accessory Kit";
+      price = 9990;
+      vehicleModel = document.getElementById('vehicle3').value;
+    }
+    let item = {
+      productName,
+      quantity,
+      price,
+      vehicleModel,
+      totalPrice: price * quantity
+    };
+    cart.push(item);
+    updateCart();
+  }
+
+  // Update cart
+  function updateCart() {
+    const cartSummaryList = document.getElementById('cart-summary-list');
+    const totalPriceElement = document.getElementById('total-price');
+    cartSummaryList.innerHTML = '';
+    let total = 0;
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.productName} (${item.vehicleModel}) - ${item.quantity} x ₹${item.price} = ₹${item.totalPrice}`;
+      cartSummaryList.appendChild(li);
+      total += item.totalPrice;
+    });
+    totalPriceElement.textContent = `Total: ₹${total}`;
+  }
+
+  // Book Installation
+  function bookInstallation() {
+    const bookingTime = document.getElementById('booking-time').value;
+    if (!bookingTime) {
+      alert("Please select a time for installation.");
+    } else {
+      alert(`Installation booked for ${bookingTime}. Thank you for your purchase!`);
+    }
+  }
+</script>
+
+<section id="map">
+  <h2>Live Truck Tracking & Showroom Location</h2>
+  <p>Visit our Aurangabad Tata dealership or track trucks live with GPS-enabled deliveries.</p>
+  <div class="map-container">
+    <iframe 
+      class="map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d234.51434816009098!2d75.3224106802475!3d19.87252582391101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb9868c8ed4349%3A0x7660ed1a7fd32bdb!2sTata%20Motors%20Commercial%20Vehicle%20Dealer%20-%20Satish%20Motors%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1755934089783!5m2!1sen!2sin"
+      width="100%" 
+      height="500" 
+      style="border:0; border-radius: 8px;"
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <button class="faq-question">What is the warranty on Tata trucks?</button>
+    <div class="faq-answer">
+      <p>Tata trucks come with a 3-year warranty for the engine and a 1-year warranty for the chassis.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Can I finance the truck through your dealership?</button>
+    <div class="faq-answer">
+      <p>Yes, we offer financing options with low interest rates and flexible loan terms. Please refer to our finance section for more details.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">How can I book a test drive?</button>
+    <div class="faq-answer">
+      <p>You can book a test drive by visiting our "Book a Service" section or contacting us directly through the contact form.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion
+  const faqButtons = document.querySelectorAll('.faq-question');
+  
+  faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+      } else {
+        answer.style.display = "block";
+      }
+    });
+  });
+</script>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <input type="tel" placeholder="Your Phone Number" required>
+    <textarea placeholder="Your Message" rows="5"></textarea>
+    <input type="submit" value="Send Message">
+  </form>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll("div[style*='position:fixed'] a");
+
+  function adjustButtonSize() {
+    let size, iconSize;
+
+    if (window.innerWidth <= 480) {        // Small phones
+      size = 40;
+      iconSize = 20;
+    } else if (window.innerWidth <= 768) { // Tablets
+      size = 50;
+      iconSize = 25;
+    } else {                               // Desktop
+      size = 60;
+      iconSize = 30;
+    }
+
+    buttons.forEach(btn => {
+      btn.style.width = size + "px";
+      btn.style.height = size + "px";
+      btn.style.padding = "0"; // reset padding
+      btn.querySelector("img").style.width = iconSize + "px";
+      btn.querySelector("img").style.height = iconSize + "px";
+    });
+  }
+
+  // Run on load and resize
+  adjustButtonSize();
+  window.addEventListener("resize", adjustButtonSize);
+});
+</script>
+
+<footer>
+  &copy; 2025 GK TRANSPORTS | All Rights Reserved
+</footer>
+
+<!-- Social Floating Buttons (WhatsApp, Instagram, LinkedIn) Vertical Stack -->
+<div style="position:fixed; bottom:100px; right:20px; z-index:999; display:flex; flex-direction: column; gap: 15px;">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/919999999999" target="_blank" 
+     style="background:#25D366; padding:15px; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="30" height="30" />
+  </a>
+  
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/yourusername" target="_blank" 
+     style="background:#E4405F; padding:15px; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30" height="30" />
+  </a>
+  
+  <!-- LinkedIn -->
+   <a href="https://www.linkedin.com/in/yourusername" target="_blank" 
+     style="background:#0077B5; padding:15px; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+    <img src="https://images.seeklogo.com/logo-png/48/1/linkedin-logo-png_seeklogo-480553.png" alt="LinkedIn" width="30" height="30" />
+  </a>
+</div>
+
+</body>
+</html>
