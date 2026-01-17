@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator - TruckHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚛</text></svg>">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        .emi-calculator {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .calculator-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-result {
+            position: sticky;
+            top: 100px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #718096;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+        }
+
+        .form-input.with-prefix {
+            padding-left: 45px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .input-range {
+            width: 100%;
+            margin: 1rem 0;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+        }
+
+        .input-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        .input-range::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #718096;
+            margin-top: 0.5rem;
+        }
+
+        .emi-result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .emi-result-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .emi-result-title {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .emi-details {
+            margin-bottom: 2.5rem;
+        }
+
+        .emi-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid transparent;
+        }
+
+        .emi-item.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left-color: #ffd700;
+        }
+
+        .emi-item.primary .emi-value {
+            color: #ffd700;
+        }
+
+        .emi-label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .emi-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #38a169;
+        }
+
+        .emi-chart {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .chart-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .chart-bar {
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .principal-bar {
+            background: #38a169;
+            transition: width 0.5s ease;
+        }
+
+        .interest-bar {
+            background: #e53e3e;
+            transition: width 0.5s ease;
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .legend-color.principal {
+            background: #38a169;
+        }
+
+        .legend-color.interest {
+            background: #e53e3e;
+        }
+
+        .preset-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .preset-btn {
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            color: #4a5568;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .preset-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .preset-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .api-note {
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #e6fffa;
+            border-radius: 8px;
+            border-left: 4px solid #38b2ac;
+        }
+
+        .loan-info {
+            background: #edf2f7;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .loan-info h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .loan-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .loan-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+        }
+
+        .loan-feature-icon {
+            color: #38a169;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .calculator-form,
+            .emi-result-card {
+                padding: 2rem;
+            }
+
+            .preset-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .calculator-result {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🚛</span>
+                    <span class="logo-text">TruckHub</span>
+                </div>
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="finance.html" class="nav-link active">Finance</a>
+                    <a href="compare.html" class="nav-link">Compare</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="signup.html" class="nav-link">Booking</a>
+                </nav>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">🚛 TruckHub</span>
+            <button id="sidebar-close" class="sidebar-close">✕</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link">🏠 Home</a>
+            <a href="gallery.html" class="sidebar-link">🖼️ Gallery</a>
+            <a href="finance.html" class="sidebar-link active">💰 Finance</a>
+            <a href="compare.html" class="sidebar-link">⚖️ Compare</a>
+            <a href="contact.html" class="sidebar-link">📞 Contact</a>
+            <a href="signup.html" class="sidebar-link">📅 Booking</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="backend-status">
+                <span class="status-dot"></span>
+                <small>C++ Backend Connected</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">
+                    <span class="page-icon">💰</span>
+                    EMI Calculator
+                </h1>
+                <p class="page-subtitle">
+                    Calculate your truck loan EMI with real-time computation powered by our C++ backend
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMI Calculator Section -->
+    <section class="emi-calculator">
+        <div class="container">
+            <div class="calculator-container">
+                <!-- Calculator Form -->
+                <div class="calculator-form">
+                    <h2 class="section-title">Loan Details</h2>
+
+                    <div class="loan-info">
+                        <h3>🏦 Financing Options</h3>
+                        <div class="loan-features">
+                            <div class="loan-feature">
+                                <span class="loan-feature-icon">✓</span>
+                                <span>Low Interest Rates from 8.5%</span>
+                            </div>
+                            <div class="loan-feature">
+                                <span class="loan-feature-icon">✓</span>
+                                <span>Up to 7 Years Tenure</span>
+                            </div>
+                            <div class="loan-feature">
+                                <span class="loan-feature-icon">✓</span>
+                                <span>Quick Approval Process</span>
+                            </div>
+                            <div class="loan-feature">
+                                <span class="loan-feature-icon">✓</span>
+                                <span>Minimal Documentation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="finance-form">
+                        <div class="form-group">
+                            <label for="loan-amount">Loan Amount</label>
+                            <div class="input-container">
+                                <span class="input-prefix">₹</span>
+                                <input type="number" 
+                                       id="loan-amount" 
+                                       class="form-input with-prefix"
+                                       min="100000" 
+                                       max="50000000" 
+                                       value="2000000" 
+                                       step="10000"
+                                       required>
+                            </div>
+                            <input type="range" 
+                                   id="amount-range" 
+                                   class="input-range"
+                                   min="100000" 
+                                   max="5000000" 
+                                   value="2000000" 
+                                   step="50000">
+                            <div class="range-labels">
+                                <span>₹1L</span>
+                                <span>₹50L</span>
+                            </div>
+
+                            <div class="preset-amounts">
+                                <button type="button" class="preset-btn" data-amount="500000">₹5L</button>
+                                <button type="button" class="preset-btn" data-amount="1000000">₹10L</button>
+                                <button type="button" class="preset-btn" data-amount="1500000">₹15L</button>
+                                <button type="button" class="preset-btn active" data-amount="2000000">₹20L</button>
+                                <button type="button" class="preset-btn" data-amount="2500000">₹25L</button>
+                                <button type="button" class="preset-btn" data-amount="3000000">₹30L</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interest-rate">Interest Rate per Year</label>
+                            <div class="input-container">
+                                <input type="number" 
+                                       id="interest-rate" 
+                                       class="form-input"
+                                       min="5" 
+                                       max="20" 
+                                       value="9.5" 
+                                       step="0.1"
+                                       required>
+                                <span class="input-suffix">%</span>
+                            </div>
+                            <input type="range" 
+                                   id="rate-range" 
+                                   class="input-range"
+                                   min="5" 
+                                   max="20" 
+                                   value="9.5" 
+                                   step="0.1">
+                            <div class="range-labels">
+                                <span>5%</span>
+                                <span>20%</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loan-tenure">Loan Tenure</label>
+                            <select id="loan-tenure" class="form-input" required>
+                                <option value="12">1 Year (12 months)</option>
+                                <option value="24">2 Years (24 months)</option>
+                                <option value="36">3 Years (36 months)</option>
+                                <option value="48">4 Years (48 months)</option>
+                                <option value="60" selected>5 Years (60 months)</option>
+                                <option value="72">6 Years (72 months)</option>
+                                <option value="84">7 Years (84 months)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">
+                            <span class="btn-icon">🧮</span>
+                            Calculate EMI
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Calculator Result -->
+                <div class="calculator-result">
+                    <div class="emi-result-card">
+                        <div class="emi-result-header">
+                            <h3 class="emi-result-title">EMI Calculation</h3>
+                            <p>Live calculation powered by C++ backend</p>
+                        </div>
+
+                        <div id="emi-result" class="emi-details">
+                            <div class="emi-item primary">
+                                <span class="emi-label">Monthly EMI</span>
+                                <span class="emi-value" id="monthly-emi">₹42,409</span>
+                            </div>
+
+                            <div class="emi-item">
+                                <span class="emi-label">Total Amount</span>
+                                <span class="emi-value" id="total-amount">₹25,44,540</span>
+                            </div>
+
+                            <div class="emi-item">
+                                <span class="emi-label">Total Interest</span>
+                                <span class="emi-value" id="total-interest">₹5,44,540</span>
+                            </div>
+                        </div>
+
+                        <div class="emi-chart">
+                            <div class="chart-title">Payment Breakdown</div>
+                            <div class="chart-bar">
+                                <div class="principal-bar" id="principal-bar" style="width: 78.6%;"></div>
+                                <div class="interest-bar" id="interest-bar" style="width: 21.4%;"></div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color principal"></span>
+                                    <span>Principal Amount</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color interest"></span>
+                                    <span>Interest Amount</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="api-note">
+                            ✓ Real-time calculations using advanced C++ algorithms<br>
+                            📊 Instant updates as you change loan parameters
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🚛</span>
+                        <span class="logo-text">TruckHub</span>
+                    </div>
+                    <p class="footer-description">
+                        India's premier truck dealership with cutting-edge C++ backend technology
+                        and comprehensive vehicle management solutions.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="gallery.html">Truck Gallery</a></li>
+                        <li><a href="finance.html">EMI Calculator</a></li>
+                        <li><a href="compare.html">Compare Trucks</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Technology</h3>
+                    <ul class="footer-links">
+                        <li>C++ OOP Backend</li>
+                        <li>RESTful APIs</li>
+                        <li>Real-time Data</li>
+                        <li>Modern Frontend</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ info@truckhub.com</li>
+                        <li>📍 Mumbai, Maharashtra</li>
+                        <li>🌐 www.truckhub.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 TruckHub. All rights reserved.</p>
+                    <div class="tech-badge">
+                        <span class="tech-label">Powered by C++</span>
+                        <div class="status-indicator">
+                            <span class="status-dot active"></span>
+                            <span class="status-text">Backend Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Finance page specific functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            setupFinancePageInteractions();
+        });
+
+        function setupFinancePageInteractions() {
+            // Range input synchronization
+            const amountInput = document.getElementById('loan-amount');
+            const amountRange = document.getElementById('amount-range');
+            const rateInput = document.getElementById('interest-rate');
+            const rateRange = document.getElementById('rate-range');
+
+            // Amount input/range sync
+            if (amountInput && amountRange) {
+                amountInput.addEventListener('input', () => {
+                    amountRange.value = amountInput.value;
+                });
+
+                amountRange.addEventListener('input', () => {
+                    amountInput.value = amountRange.value;
+                    app.calculateEMILive();
+                });
+            }
+
+            // Rate input/range sync
+            if (rateInput && rateRange) {
+                rateInput.addEventListener('input', () => {
+                    rateRange.value = rateInput.value;
+                });
+
+                rateRange.addEventListener('input', () => {
+                    rateInput.value = rateRange.value;
+                    app.calculateEMILive();
+                });
+            }
+
+            // Preset amount buttons
+            const presetBtns = document.querySelectorAll('.preset-btn');
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    presetBtns.forEach(b => b.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    // Update amount input and range
+                    const amount = btn.dataset.amount;
+                    if (amountInput) amountInput.value = amount;
+                    if (amountRange) amountRange.value = amount;
+
+                    // Trigger calculation
+                    if (app) app.calculateEMILive();
+                });
+            });
+        }
+    </script>
+</body>
+</html>

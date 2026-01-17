@@ -1,0 +1,38 @@
+[
+  {
+    "id": "city_night",
+    "name": "City Night",
+    "seed": 42,
+    "friction": 1.05,
+    "speedMultiplier": 0.98,
+    "obstacleDensity": 0.04,
+    "powerupDensity": 0.02,
+    "laneRumble": true,
+    "weather": { "probRain": 0.35, "probFog": 0.15 },
+    "visual": { "skyColor": "#0b1020", "bgType": "city" }
+  },
+  {
+    "id": "mountain_pass",
+    "name": "Mountain Pass",
+    "seed": 31415,
+    "friction": 1.12,
+    "speedMultiplier": 0.92,
+    "obstacleDensity": 0.06,
+    "powerupDensity": 0.015,
+    "laneRumble": false,
+    "weather": { "probRain": 0.12, "probFog": 0.25 },
+    "visual": { "skyColor": "#334455", "bgType": "mountain" }
+  },
+  {
+    "id": "tropical_jungle",
+    "name": "Tropical Jungle",
+    "seed": 2718,
+    "friction": 1.2,
+    "speedMultiplier": 0.9,
+    "obstacleDensity": 0.08,
+    "powerupDensity": 0.01,
+    "laneRumble": true,
+    "weather": { "probRain": 0.6, "probFog": 0.1 },
+    "visual": { "skyColor": "#145214", "bgType": "jungle" }
+  }
+]

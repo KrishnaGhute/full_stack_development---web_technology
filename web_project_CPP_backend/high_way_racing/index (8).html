@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Lane Highway Racing</title>
+    <link rel="stylesheet" href="style (2).css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="ui-overlay">
+            <!-- Top HUD -->
+            <div class="top-hud">
+                <div class="score-display">
+                    <span id="score">Score: 0</span>
+                    <span id="speed">Speed: 0 km/h</span>
+                </div>
+                <!-- Boost bar -->
+                <div class="boost-container" id="boost-container" style="pointer-events:none;">
+                    <div class="boost-bar-bg">
+                        <div id="boost-bar" class="boost-bar-fill"></div>
+                    </div>
+                    <div id="boost-timer" class="boost-timer">Ready</div>
+                </div>
+                <div class="game-stats">
+                    <span id="distance">Distance: 0m</span>
+                    <span id="level">Level: 1</span>
+                </div>
+                <div class="hud-actions">
+                    <button id="fullscreenBtn" class="btn btn--secondary">⛶ Fullscreen</button>
+                </div>
+            </div>
+
+            <!-- Server Connection Status -->
+            <div id="connection-status" class="connection-status">Connecting...</div>
+            <div id="fps-counter" class="fps-counter">FPS: 0</div>
+
+            <!-- Traffic start countdown -->
+            <div id="traffic-countdown" class="traffic-countdown" aria-live="polite" style="display:none;">Traffic in: <span id="traffic-count">10</span></div>
+
+            <!-- Debug info -->
+            <div class="debug-overlay">
+                <p>Throttle: <span id="debug-throttle">0</span></p>
+                <p>Steer: <span id="debug-steer">0</span></p>
+                <p>Handbrake: <span id="debug-handbrake">false</span></p>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div class="game-over-screen" id="gameOverScreen">
+                <div class="game-over-content">
+                    <h2>🏁 Game Over!</h2>
+                    <div class="final-stats">
+                        <p>Final Score: <span id="finalScore">0</span></p>
+                        <p>Distance Traveled: <span id="finalDistance">0</span>m</p>
+                        <p>Max Speed: <span id="finalSpeed">0</span> km/h</p>
+                        <p>Level Reached: <span id="finalLevel">1</span></p>
+                    </div>
+                    <button id="restartBtn" class="restart-btn">🔄 Play Again</button>
+                </div>
+            </div>
+
+            <!-- Controls hint -->
+            <div class="controls-hint">
+                <div class="control-item"><kbd>A</kbd><kbd>D</kbd> Change Lane</div>
+                <div class="control-item"><kbd>W</kbd> Accelerate</div>
+                <div class="control-item"><kbd>S</kbd> Brake</div>
+                <div class="control-item"><kbd>Space</kbd> Pause</div>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+        <!-- Mobile Controls -->
+        <div class="mobile-controls" id="mobileControls">
+            <div class="steering-controls">
+                <button class="control-btn" id="leftBtn">←</button>
+                <button class="control-btn" id="rightBtn">→</button>
+            </div>
+            <div class="throttle-controls">
+                <button class="control-btn" id="accelerateBtn">⬆️</button>
+                <button class="control-btn" id="brakeBtn">⬇️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load game configuration -->
+    <script>
+        window.gameConfig = null;
+
+        fetch('config.json')
+            .then(res => res.json())
+            .then(config => {
+                window.gameConfig = config;
+                console.log('Game config loaded:', config);
+            })
+                .catch(() => {
+                console.log('Using default config');
+                window.gameConfig = {
+                    "canvas": {"width":800,"height":600},
+                        "lanes":3,
+                    "physics":{"gravity":0.3,"friction":0.85},
+                    "vehicles":{"spawnRate":0.02,"minSpeed":2,"maxSpeed":8,"types":["car","truck","sports"]}
+                };
+            })
+            .finally(() => {
+                // Load game script
+                const script = document.createElement('script');
+                script.src = 'game.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+</html>

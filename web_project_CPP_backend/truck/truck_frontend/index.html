@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruckHub - Premium Truck Dealership</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚛</text></svg>">
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🚛</span>
+                    <span class="logo-text">TruckHub</span>
+                </div>
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="finance.html" class="nav-link">Finance</a>
+                    <a href="compare.html" class="nav-link">Compare</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="signup.html" class="nav-link">Booking</a>
+                </nav>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">🚛 TruckHub</span>
+            <button id="sidebar-close" class="sidebar-close">✕</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link active">🏠 Home</a>
+            <a href="gallery.html" class="sidebar-link">🖼️ Gallery</a>
+            <a href="finance.html" class="sidebar-link">💰 Finance</a>
+            <a href="compare.html" class="sidebar-link">⚖️ Compare</a>
+            <a href="contact.html" class="sidebar-link">📞 Contact</a>
+            <a href="signup.html" class="sidebar-link">📅 Booking</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="backend-status">
+                <span class="status-dot"></span>
+                <small>C++ Backend Connected</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Premium Commercial Trucks
+                    <span class="highlight">Built for Success</span>
+                </h1>
+                <p class="hero-description">
+                    Discover India's most reliable commercial vehicles with cutting-edge technology,
+                    superior performance, and unmatched durability. Your business deserves the best.
+                </p>
+                <div class="hero-buttons">
+                    <a href="gallery.html" class="btn btn-primary">
+                        <span class="btn-icon">🚛</span>
+                        View Our Trucks
+                    </a>
+                    <a href="finance.html" class="btn btn-secondary">
+                        <span class="btn-icon">💰</span>
+                        Calculate EMI
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="trucks-count">8+</span>
+                        <span class="stat-label">Truck Models</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Trucks Section -->
+    <section class="featured-trucks">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Trucks</h2>
+                <p class="section-subtitle">
+                    Handpicked selection of our most popular commercial vehicles
+                </p>
+            </div>
+
+            <div class="section-footer">
+                <a href="gallery.html" class="btn btn-outline">
+                   🚛 View All Trucks
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Availability Status Section -->
+    <section class="availability-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Current Stock Status</h2>
+                <p class="section-subtitle">Real-time availability updated from our inventory system</p>
+            </div>
+
+            <div class="availability-table-container">
+                <table id="availability-table" class="availability-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="availability-tbody">
+                        <tr>
+                            <td colspan="3" class="loading-cell">
+                                <div class="loading-spinner">
+                                    <div class="spinner"></div>
+                                    <span>Loading availability data...</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose TruckHub?</h2>
+                <p class="section-subtitle">Experience excellence in every aspect of our service</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Premium Quality</h3>
+                    <p class="feature-description">
+                        All trucks undergo rigorous quality checks and come with comprehensive warranties
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Flexible Finance</h3>
+                    <p class="feature-description">
+                        Competitive EMI rates with flexible payment options tailored to your business needs
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-description">
+                        Round-the-clock technical support and maintenance services across India
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3 class="feature-title">Quick Delivery</h3>
+                    <p class="feature-description">
+                        Fast processing and delivery with real-time tracking of your vehicle
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Upgrade Your Fleet?</h2>
+                <p class="cta-description">
+                    Connect with our experts today and find the perfect truck for your business needs
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-large">
+                        <span class="btn-icon">📞</span>
+                        Contact Our Experts
+                    </a>
+                    <a href="compare.html" class="btn btn-outline btn-large">
+                        <span class="btn-icon">⚖️</span>
+                        Compare Trucks
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🚛</span>
+                        <span class="logo-text">TruckHub</span>
+                    </div>
+                    <p class="footer-description">
+                        India's premier truck dealership with cutting-edge C++ backend technology
+                        and comprehensive vehicle management solutions.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="gallery.html">Truck Gallery</a></li>
+                        <li><a href="finance.html">EMI Calculator</a></li>
+                        <li><a href="compare.html">Compare Trucks</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Technology</h3>
+                    <ul class="footer-links">
+                        <li>C++ OOP Backend</li>
+                        <li>RESTful APIs</li>
+                        <li>Real-time Data</li>
+                        <li>Modern Frontend</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ info@truckhub.com</li>
+                        <li>📍 Mumbai, Maharashtra</li>
+                        <li>🌐 www.truckhub.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 TruckHub. All rights reserved.</p>
+                    <div class="tech-badge">
+                        <span class="tech-label">Powered by C++</span>
+                        <div class="status-indicator">
+                            <span class="status-dot active"></span>
+                            <span class="status-text">Backend Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

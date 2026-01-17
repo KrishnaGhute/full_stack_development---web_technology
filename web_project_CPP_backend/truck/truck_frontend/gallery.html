@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truck Gallery - TruckHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚛</text></svg>">
+<style>
+/* --- GRID & CARD --- */
+.trucks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.truck-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.truck-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.truck-image img { width: 100%; height: 180px; object-fit: cover; }
+.truck-info { padding: 1rem; }
+.truck-brand { font-weight: bold; color: #1a202c; font-size: 0.9rem; text-transform: uppercase; }
+.truck-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.truck-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.spec { display: flex; align-items: center; font-size: 0.85rem; gap: 0.25rem; }
+.spec-full { width: 100%; }
+.truck-footer { display: flex; justify-content: space-between; align-items: center; }
+.availability-badge { padding: 0.2rem 0.5rem; border-radius: 5px; font-size: 0.75rem; color: #fff; font-weight: 600; }
+.availability-badge.In\ Stock { background-color: #38a169; }
+.availability-badge.Limited { background-color: #dd6b20; }
+.availability-badge.Out\ of\ Stock { background-color: #e53e3e; }
+.truck-actions button { margin-left: 0.25rem; font-size: 0.75rem; }
+
+/* --- FILTERS --- */
+.filters-section { background-color: #f7fafc; padding: 1.5rem 0; border-bottom: 1px solid #e2e8f0; }
+.filters-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start; align-items: center; }
+.filter-group { display: flex; flex-direction: column; min-width: 150px; flex: 1; }
+.filter-label { font-size: 0.85rem; font-weight: 600; color: #4a5568; margin-bottom: 0.3rem; }
+.filter-select { padding: 0.4rem 0.6rem; border: 1px solid #cbd5e0; border-radius: 6px; background-color: #fff; font-size: 0.9rem; color: #2d3748; transition: border 0.2s, box-shadow 0.2s; }
+.filter-select:focus { outline: none; border-color: #3182ce; box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.3); }
+.btn-outline { display: flex; align-items: center; padding: 0.45rem 0.9rem; font-size: 0.85rem; font-weight: 600; color: #3182ce; background-color: transparent; border: 1px solid #3182ce; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+.btn-outline .btn-icon { margin-right: 0.35rem; }
+.btn-outline:hover { background-color: #3182ce; color: #fff; }
+
+/* --- LIST VIEW --- */
+.trucks-list { display: flex; flex-direction: column; gap: 1rem; }
+.trucks-list .truck-card { display: flex; gap: 1rem; }
+.trucks-list .truck-image img { width: 250px; height: auto; }
+</style>
+</head>
+<body>
+
+<!-- Sticky Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🚛</span>
+                    <span class="logo-text">TruckHub</span>
+                </div>
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="finance.html" class="nav-link active">Finance</a>
+                    <a href="compare.html" class="nav-link">Compare</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="signup.html" class="nav-link">Booking</a>
+                </nav>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">🚛 TruckHub</span>
+            <button id="sidebar-close" class="sidebar-close">✕</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link">🏠 Home</a>
+            <a href="gallery.html" class="sidebar-link">🖼️ Gallery</a>
+            <a href="finance.html" class="sidebar-link active">💰 Finance</a>
+            <a href="compare.html" class="sidebar-link">⚖️ Compare</a>
+            <a href="contact.html" class="sidebar-link">📞 Contact</a>
+            <a href="signup.html" class="sidebar-link">📅 Booking</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="backend-status">
+                <span class="status-dot"></span>
+                <small>C++ Backend Connected</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+<section class="filters-section">
+    <div class="container">
+        <div class="filters-container">
+            <div class="filter-group">
+                <label class="filter-label">Brand:</label>
+                <select id="brand-filter" class="filter-select">
+                    <option value="">All Brands</option>
+                    <option value="Tata">Tata</option>
+                    <option value="Ashok Leyland">Ashok Leyland</option>
+                    <option value="Mahindra">Mahindra</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="BharatBenz">BharatBenz</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Fuel Type:</label>
+                <select id="fuel-filter" class="filter-select">
+                    <option value="">All Fuels</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="CNG">CNG</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Availability:</label>
+                <select id="availability-filter" class="filter-select">
+                    <option value="">All</option>
+                    <option value="In Stock">In Stock</option>
+                    <option value="Limited">Limited</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Price Range (₹K):</label>
+                <select id="price-filter" class="filter-select">
+                    <option value="">All</option>
+                    <option value="0-20000">0-20000</option>
+                    <option value="20000-40000">20000-40000</option>
+                    <option value="40000-60000">40000-60000</option>
+                    <option value="60000+">60000+</option>
+                </select>
+            </div>
+            <button id="clear-filters" class="btn btn-outline">
+                <span class="btn-icon">🔄</span>Clear Filters
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section">
+    <div class="container">
+        <div id="trucks-gallery-grid" class="trucks-grid"></div>
+    </div>
+</section>
+
+<script>
+// --- TRUCK DATA ---
+const trucks = [
+    {id:1,brand:"Tata",model:"Prima FL 5530.S",gvw:42.32,engine:"6.7L Cummins ISBe",horsepower:300,image:"https://trucks.tatamotors.com/assets/trucks/files/trucks/2025-03/tata-prima-3530k-hrt.jpg?VersionId=ksN2G7RcUHQ1BokfaQVUC5zLqREGkQN6",price:55000,fuelType:"Diesel",mileage:3.5,availability:"In Stock"},
+    {id:2,brand:"Tata",model:"Signa 4930.T",gvw:47.48,engine:"6.7L Cummins ISBe",horsepower:300,image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJvJtjk_H3gWBGpPPq7t3RH0HgOpPI9_z-Dg&s",price:49000,fuelType:"Diesel",mileage:4.0,availability:"In Stock"},
+    {id:3,brand:"Tata",model:"Signa 3525.KTK",gvw:45.52,engine:"Cummins ISBe",horsepower:250,image:"https://images.91trucks.com/trucks/models/63/1196/tata-signa-3525ktk-763319353.jpg",price:35000,fuelType:"Diesel",mileage:4.2,availability:"Limited"},
+    {id:4,brand:"Tata",model:"1916 LPT",gvw:27.5,engine:"3.3L NG",horsepower:160,image:"https://trucks.tatamotors.com/assets/trucks/files/trucks/2024-03/1916-lpt.png?VersionId=dDcqR0ZNLHb5DAEfwh5S7ZnpZ7muZSyM",price:19000,fuelType:"CNG",mileage:5.0,availability:"In Stock"},
+    {id:5,brand:"Ashok Leyland",model:"AVTR 5520",gvw:48.75,engine:"H-Series CRS",horsepower:520,image:"https://www.motorindiaonline.in/wp-content/uploads/2022/07/AL-truck-1.jpg",price:55000,fuelType:"Diesel",mileage:3.8,availability:"In Stock"},
+    {id:6,brand:"Mahindra",model:"Blazo X 49",gvw:46.2,engine:"mPOWER FuelSmart",horsepower:490,image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX-f7SnXq6SPGO-9G3FP4Gai__e1rM6Wid7g&s",price:49000,fuelType:"Diesel",mileage:4.1,availability:"Out of Stock"},
+    {id:7,brand:"Volvo",model:"FM 440",gvw:65.8,engine:"D13K Euro VI",horsepower:440,image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGAdIzd-uUcJdVZsZRaR0_JF6m7g-FaI2D1w&s",price:37000,fuelType:"Diesel",mileage:3.2,availability:"Limited"},
+    {id:8,brand:"BharatBenz",model:"3528C",gvw:52.4,engine:"OM 936",horsepower:280,image:"https://autobahntrucking.com/storage/app/vehicles/images/Bharatbenz-truck-3528C.jpg",price:35000,fuelType:"Diesel",mileage:3.9,availability:"In Stock"}
+];
+
+// --- RENDER FUNCTION ---
+function renderTrucks(list){
+    const container = document.getElementById('trucks-gallery-grid');
+    container.innerHTML = '';
+    list.forEach(truck=>{
+        const card=document.createElement('div');
+        card.className='truck-card';
+        card.innerHTML=`
+        <div class="truck-image">
+            <img src="${truck.image}" alt="${truck.model}" onerror="this.src='https://via.placeholder.com/300x180?text=Truck+Image'">
+        </div>
+        <div class="truck-info">
+            <div class="truck-brand">${truck.brand}</div>
+            <div class="truck-name">${truck.model}</div>
+            <div class="truck-specs">
+                <div class="spec">⚡ ${truck.horsepower} HP</div>
+                <div class="spec">⚖️ ${truck.gvw.toLocaleString()} t</div>
+                <div class="spec">🔧 ${truck.engine}</div>
+                <div class="spec">⛽ ${truck.fuelType}</div>
+                <div class="spec">📊 ${truck.mileage} km/l</div>
+                <div class="spec-full availability-badge ${truck.availability.replace(/\s/g,'\\ ')}">${truck.availability}</div>
+            </div>
+            <div class="truck-footer">
+                <button class="btn btn-primary btn-sm" onclick="showTruckDetails(${truck.id})">Details</button>
+                <button class="btn btn-outline btn-sm" onclick="alert('Finance page for ${truck.model}')">Finance</button>
+            </div>
+        </div>`;
+        container.appendChild(card);
+    });
+}
+
+// --- FILTER & SORT ---
+function applyFilters(){
+    let filtered = trucks.slice();
+    const brand = document.getElementById('brand-filter').value;
+    const fuel = document.getElementById('fuel-filter').value;
+    const avail = document.getElementById('availability-filter').value;
+    const price = document.getElementById('price-filter').value;
+
+    if(brand) filtered = filtered.filter(t=>t.brand===brand);
+    if(fuel) filtered = filtered.filter(t=>t.fuelType===fuel);
+    if(avail) filtered = filtered.filter(t=>t.availability===avail);
+    if(price){
+        if(price==='60000+') filtered = filtered.filter(t=>t.price>60000);
+        else {
+            const [min,max]=price.split('-').map(Number);
+            filtered = filtered.filter(t=>t.price>=min && t.price<=max);
+        }
+    }
+    renderTrucks(filtered);
+}
+
+function clearFilters(){
+    ['brand-filter','fuel-filter','availability-filter','price-filter'].forEach(id=>{
+        document.getElementById(id).value='';
+    });
+    renderTrucks(trucks);
+}
+
+// --- DETAILS ---
+function showTruckDetails(id){
+    const truck = trucks.find(t=>t.id===id);
+    alert(`Truck: ${truck.brand} ${truck.model}\nHP: ${truck.horsepower}\nEngine: ${truck.engine}\nFuel: ${truck.fuelType}\nMileage: ${truck.mileage}\nPrice: ₹${truck.price}K\nAvailability: ${truck.availability}`);
+}
+
+// --- INIT ---
+document.addEventListener('DOMContentLoaded',()=>{
+    renderTrucks(trucks);
+    ['brand-filter','fuel-filter','availability-filter','price-filter'].forEach(id=>{
+        document.getElementById(id).addEventListener('change',applyFilters);
+    });
+    document.getElementById('clear-filters').addEventListener('click',clearFilters);
+    // If the main app is not initialized (script.js not loaded or not instantiated),
+    // attach a lightweight sidebar handler so the menu works on this page.
+    if (typeof app === 'undefined') {
+        // Sidebar setup (fallback)
+        function handleScroll() {
+            const header = document.getElementById('header');
+            if (!header) return;
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        }
+
+        function toggleSidebar(open) {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (!sidebar || !overlay) return;
+            if (open) {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function setupSidebarListeners() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebarClose = document.getElementById('sidebar-close');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+            if (menuToggle) menuToggle.addEventListener('click', () => toggleSidebar(true));
+            if (sidebarClose) sidebarClose.addEventListener('click', () => toggleSidebar(false));
+            if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+            window.addEventListener('scroll', handleScroll);
+        }
+
+        setupSidebarListeners();
+    }
+});
+</script>
+</body>
+</html>

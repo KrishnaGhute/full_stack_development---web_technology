@@ -1,0 +1,177 @@
+{
+    "canvas": {
+        "width": 800,
+        "height": 600,
+        "backgroundColor": "#333333"
+    },
+    "road": {
+        "lanes": 3,
+        "speed": 8,
+        "lineSpacing": 40,
+        "edgeColor": "#ffff00",
+        "lineColor": "#ffffff",
+        "surfaceColor": "#333333",
+        "grassColor": "#228B22"
+    },
+    "player": {
+        "startLane": 1,
+        "width": 50,
+        "height": 80,
+        "maxSpeed": 12,
+        "acceleration": 0.3,
+        "deceleration": 0.2,
+        "laneChangeSpeed": 8,
+        "color": "#ff4444"
+    },
+    "traffic": {
+        "spawnRate": 0.02,
+        "spawnRateIncrease": 0.005,
+        "maxSpawnRate": 0.08,
+        "avoidPlayerLanes": true,
+        "minSpawnDistance": 150,
+        "vehicleTypes": [
+            {
+                "name": "compact_car",
+                "color": "#4444ff",
+                "width": 50,
+                "height": 80,
+                "baseSpeed": 3,
+                "speedVariation": 1,
+                "points": 10,
+                "weight": 30
+            },
+            {
+                "name": "sedan",
+                "color": "#44ff44",
+                "width": 55,
+                "height": 90,
+                "baseSpeed": 4,
+                "speedVariation": 1,
+                "points": 15,
+                "weight": 25
+            },
+            {
+                "name": "suv",
+                "color": "#ff44ff",
+                "width": 60,
+                "height": 100,
+                "baseSpeed": 2,
+                "speedVariation": 0.5,
+                "points": 20,
+                "weight": 20
+            },
+            {
+                "name": "sports_car",
+                "color": "#ffff44",
+                "width": 45,
+                "height": 70,
+                "baseSpeed": 5,
+                "speedVariation": 2,
+                "points": 8,
+                "weight": 15
+            },
+            {
+                "name": "truck",
+                "color": "#44ffff",
+                "width": 65,
+                "height": 120,
+                "baseSpeed": 2.5,
+                "speedVariation": 0.3,
+                "points": 25,
+                "weight": 10
+            }
+        ]
+    },
+    "physics": {
+        "gravity": 0.3,
+        "friction": 0.85,
+        "airResistance": 0.02,
+        "collisionDamping": 0.8
+    },
+    "gameplay": {
+        "baseScore": {
+            "perFrame": 0.5,
+            "perSpeed": 0.5,
+            "perVehicleAvoided": 1
+        },
+        "levelProgression": {
+            "distancePerLevel": 1000,
+            "speedIncrease": 0.1,
+            "difficultyIncrease": 0.005
+        },
+        "effects": {
+            "speedBlurThreshold": 8,
+            "highSpeedThreshold": 10,
+            "particleCount": 50,
+            "explosionParticles": 50
+        }
+    },
+    "audio": {
+        "enabled": true,
+        "sounds": {
+            "laneChange": {
+                "frequency": 400,
+                "duration": 0.1,
+                "type": "sine"
+            },
+            "levelUp": {
+                "frequency": 800,
+                "duration": 0.3,
+                "type": "sine"
+            },
+            "crash": {
+                "frequency": 200,
+                "duration": 0.8,
+                "type": "sawtooth"
+            },
+            "engine": {
+                "baseFrequency": 100,
+                "maxFrequency": 300,
+                "type": "sawtooth"
+            }
+        }
+    },
+    "controls": {
+        "keyboard": {
+            "accelerate": ["KeyW", "ArrowUp"],
+            "brake": ["KeyS", "ArrowDown"],
+            "left": ["KeyA", "ArrowLeft"],
+            "right": ["KeyD", "ArrowRight"],
+            "pause": ["Space"],
+            "restart": ["KeyR"]
+        },
+        "mobile": {
+            "enabled": true,
+            "buttonSize": 60,
+            "buttonSpacing": 10
+        }
+    },
+    "ui": {
+        "showFPS": false,
+        "showDebugInfo": false,
+        "hud": {
+            "position": "top",
+            "backgroundColor": "rgba(0, 0, 0, 0.8)",
+            "textColor": "#00ffff",
+            "fontSize": 16
+        },
+        "gameOver": {
+            "showStats": true,
+            "saveHighScore": true,
+            "fadeInDuration": 0.5
+        }
+    },
+    "performance": {
+        "targetFPS": 60,
+        "maxParticles": 200,
+        "maxTrafficVehicles": 20,
+        "renderDistance": 1000,
+        "cullingEnabled": true
+    },
+    "development": {
+        "debugMode": false,
+        "showCollisionBoxes": false,
+        "showLaneIndicators": false,
+        "logPerformance": false
+    }
+}

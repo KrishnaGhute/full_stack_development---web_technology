@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Trucks - TruckHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚛</text></svg>">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-section {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .comparison-selector {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .selector-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: end;
+        }
+
+        .truck-selector {
+            text-align: center;
+        }
+
+        .selector-label {
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1.2rem;
+        }
+
+        .truck-select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .truck-select:focus {
+            outline: none;
+            border-color: #38a169;
+            box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.1);
+        }
+
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(56, 161, 105, 0.3);
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .truck-comparison-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .truck-comparison-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .truck-header {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .truck-image-large {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .truck-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .truck-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .specs-container {
+            padding: 2.5rem;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .spec-value {
+            font-weight: 700;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+
+        .spec-icon {
+            color: #38a169;
+            font-size: 1.2rem;
+        }
+
+        .comparison-result {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .comparison-result.hidden {
+            display: none;
+        }
+
+        .result-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .differences-section {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .differences-title {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .differences-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .differences-list li {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #38a169;
+        }
+
+        .recommendation-section {
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .recommendation-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .recommendation-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .comparison-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .winner-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ffd700;
+            color: #2d3748;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        .price-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+
+        .price-item {
+            text-align: center;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #38a169;
+        }
+
+        .price-difference {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .quick-compare {
+            background: #edf2f7;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+        }
+
+        .quick-compare-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 2rem;
+        }
+
+        .quick-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .quick-option {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .quick-option:hover {
+            border-color: #38a169;
+            transform: translateY(-2px);
+        }
+
+        .quick-option-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-option-desc {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        @media (max-width: 768px) {
+            .selector-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .vs-divider {
+                order: 2;
+                margin: 0 auto;
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .comparison-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .price-comparison {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🚛</span>
+                    <span class="logo-text">TruckHub</span>
+                </div>
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="finance.html" class="nav-link">Finance</a>
+                    <a href="compare.html" class="nav-link active">Compare</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="signup.html" class="nav-link">Booking</a>
+                </nav>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">🚛 TruckHub</span>
+            <button id="sidebar-close" class="sidebar-close">✕</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link">🏠 Home</a>
+            <a href="gallery.html" class="sidebar-link">🖼️ Gallery</a>
+            <a href="finance.html" class="sidebar-link">💰 Finance</a>
+            <a href="compare.html" class="sidebar-link active">⚖️ Compare</a>
+            <a href="contact.html" class="sidebar-link">📞 Contact</a>
+            <a href="signup.html" class="sidebar-link">📅 Booking</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="backend-status">
+                <span class="status-dot"></span>
+                <small>C++ Backend Connected</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">
+                    <span class="page-icon">⚖️</span>
+                    Compare Trucks
+                </h1>
+                <p class="page-subtitle">
+                    Side-by-side comparison of truck models with intelligent analysis powered by C++ algorithms
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Compare Options -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="quick-compare">
+                <h3 class="quick-compare-title">🚀 Popular Comparisons</h3>
+                <div class="quick-options">
+                    <div class="quick-option" onclick="quickCompare(1, 2)">
+                        <div class="quick-option-title">Tata Prima vs Signa</div>
+                        <div class="quick-option-desc">Heavy-duty performance comparison</div>
+                    </div>
+                    <div class="quick-option" onclick="quickCompare(4, 6)">
+                        <div class="quick-option-title">CNG vs Diesel</div>
+                        <div class="quick-option-desc">Fuel efficiency analysis</div>
+                    </div>
+                    <div class="quick-option" onclick="quickCompare(5, 7)">
+                        <div class="quick-option-title">Ashok Leyland vs Volvo</div>
+                        <div class="quick-option-desc">Premium segment comparison</div>
+                    </div>
+                    <div class="quick-option" onclick="quickCompare(2, 8)">
+                        <div class="quick-option-title">Best Value Options</div>
+                        <div class="quick-option-desc">Price-to-performance ratio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Truck Selector -->
+            <div class="comparison-selector">
+                <h2 class="section-title">Select Trucks to Compare</h2>
+
+                <form id="comparison-form">
+                    <div class="selector-grid">
+                        <div class="truck-selector">
+                            <label class="selector-label" for="truck1-select">
+                                🚛 First Truck
+                            </label>
+                            <select id="truck1-select" class="truck-select" required>
+                                <option value="">Choose first truck...</option>
+                            </select>
+                        </div>
+
+                        <div class="vs-divider">VS</div>
+
+                        <div class="truck-selector">
+                            <label class="selector-label" for="truck2-select">
+                                🚚 Second Truck
+                            </label>
+                            <select id="truck2-select" class="truck-select" required>
+                                <option value="">Choose second truck...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span class="btn-icon">⚖️</span>
+                            Compare Trucks
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Comparison Result -->
+            <div id="comparison-result" class="hidden">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🚛</span>
+                        <span class="logo-text">TruckHub</span>
+                    </div>
+                    <p class="footer-description">
+                        India's premier truck dealership with cutting-edge C++ backend technology
+                        and comprehensive vehicle management solutions.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="gallery.html">Truck Gallery</a></li>
+                        <li><a href="finance.html">EMI Calculator</a></li>
+                        <li><a href="compare.html">Compare Trucks</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Technology</h3>
+                    <ul class="footer-links">
+                        <li>C++ OOP Backend</li>
+                        <li>RESTful APIs</li>
+                        <li>Real-time Data</li>
+                        <li>Modern Frontend</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ info@truckhub.com</li>
+                        <li>📍 Mumbai, Maharashtra</li>
+                        <li>🌐 www.truckhub.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 TruckHub. All rights reserved.</p>
+                    <div class="tech-badge">
+                        <span class="tech-label">Powered by C++</span>
+                        <div class="status-indicator">
+                            <span class="status-dot active"></span>
+                            <span class="status-text">Backend Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        // Compare page specific functionality
+        function quickCompare(id1, id2) {
+            const select1 = document.getElementById('truck1-select');
+            const select2 = document.getElementById('truck2-select');
+
+            if (select1 && select2) {
+                select1.value = id1;
+                select2.value = id2;
+
+                // Trigger comparison
+                if (app) {
+                    app.compareTrucks();
+                }
+            }
+        }
+
+        // Enhanced comparison result display
+        function showEnhancedComparison(result) {
+            const container = document.getElementById('comparison-result');
+            if (!container || !result.isValid) return;
+
+            const truck1 = result.truck1;
+            const truck2 = result.truck2;
+
+            // Determine which truck is better for price
+            const betterPrice = truck1.price < truck2.price ? 1 : 2;
+            const betterPower = truck1.horsepower > truck2.horsepower ? 1 : 2;
+            const betterMileage = truck1.mileage > truck2.mileage ? 1 : 2;
+
+            container.innerHTML = `
+                <div class="comparison-container">
+                    <div class="truck-comparison-card" style="position: relative;">
+                        ${betterPrice === 1 ? '<div class="winner-badge">🏆 Better Price</div>' : ''}
+                        ${betterPower === 1 ? '<div class="winner-badge" style="top: 30px;">⚡ More Power</div>' : ''}
+                        ${betterMileage === 1 ? '<div class="winner-badge" style="top: 70px;">⛽ Better Mileage</div>' : ''}
+
+                        <div class="truck-header">
+                            <div class="truck-image-large">🚛</div>
+                            <div class="truck-title">${truck1.brand} ${truck1.model}</div>
+                            <div class="truck-subtitle">Commercial Vehicle</div>
+                        </div>
+
+                        <div class="specs-container">
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">💰</span>
+                                    Price
+                                </span>
+                                <span class="spec-value">₹${truck1.price} L</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">⚡</span>
+                                    Power
+                                </span>
+                                <span class="spec-value">${truck1.horsepower} HP</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">⚖️</span>
+                                    GVW
+                                </span>
+                                <span class="spec-value">${truck1.gvw?.toLocaleString() || 'N/A'} kg</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">🔧</span>
+                                    Engine
+                                </span>
+                                <span class="spec-value">${truck1.engine}</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">⛽</span>
+                                    Fuel Type
+                                </span>
+                                <span class="spec-value">${truck1.fuelType}</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">📊</span>
+                                    Mileage
+                                </span>
+                                <span class="spec-value">${truck1.mileage} km/l</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="truck-comparison-card" style="position: relative;">
+                        ${betterPrice === 2 ? '<div class="winner-badge">🏆 Better Price</div>' : ''}
+                        ${betterPower === 2 ? '<div class="winner-badge" style="top: 30px;">⚡ More Power</div>' : ''}
+                        ${betterMileage === 2 ? '<div class="winner-badge" style="top: 70px;">⛽ Better Mileage</div>' : ''}
+
+                        <div class="truck-header">
+                            <div class="truck-image-large">🚚</div>
+                            <div class="truck-title">${truck2.brand} ${truck2.model}</div>
+                            <div class="truck-subtitle">Commercial Vehicle</div>
+                        </div>
+
+                        <div class="specs-container">
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">💰</span>
+                                    Price
+                                </span>
+                                <span class="spec-value">₹${truck2.price} L</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">⚡</span>
+                                    Power
+                                </span>
+                                <span class="spec-value">${truck2.horsepower} HP</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">⚖️</span>
+                                    GVW
+                                </span>
+                                <span class="spec-value">${truck2.gvw?.toLocaleString() || 'N/A'} kg</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">🔧</span>
+                                    Engine
+                                </span>
+                                <span class="spec-value">${truck2.engine}</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">⛽</span>
+                                    Fuel Type
+                                </span>
+                                <span class="spec-value">${truck2.fuelType}</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">
+                                    <span class="spec-icon">📊</span>
+                                    Mileage
+                                </span>
+                                <span class="spec-value">${truck2.mileage} km/l</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-result">
+                    <div class="result-header">
+                        <h3 class="result-title">🏆 Comparison Analysis</h3>
+                        <p>Intelligent analysis powered by C++ comparison algorithms</p>
+                    </div>
+
+                    <div class="price-comparison">
+                        <div class="price-item">
+                            <div class="price-label">${truck1.brand} ${truck1.model}</div>
+                            <div class="price-value">₹${truck1.price}L</div>
+                        </div>
+                        <div class="price-difference">
+                            Difference: ₹${Math.abs(truck1.price - truck2.price).toFixed(2)}L
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">${truck2.brand} ${truck2.model}</div>
+                            <div class="price-value">₹${truck2.price}L</div>
+                        </div>
+                    </div>
+
+                    <div class="differences-section">
+                        <h4 class="differences-title">
+                            <span>📋</span>
+                            Key Differences
+                        </h4>
+                        <ul class="differences-list">
+                            ${result.differences.map(diff => `<li>${diff}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-section">
+                        <h4 class="recommendation-title">
+                            <span>💡</span>
+                            Our Recommendation
+                        </h4>
+                        <p class="recommendation-text">${result.recommendation}</p>
+                    </div>
+
+                    <div class="comparison-actions">
+                        <a href="finance.html?truck=${truck1.id}" class="btn btn-primary">
+                            <span class="btn-icon">💰</span>
+                            Finance ${truck1.model}
+                        </a>
+                        <a href="finance.html?truck=${truck2.id}" class="btn btn-primary">
+                            <span class="btn-icon">💰</span>
+                            Finance ${truck2.model}
+                        </a>
+                        <a href="contact.html" class="btn btn-outline">
+                            <span class="btn-icon">📞</span>
+                            Get Expert Advice
+                        </a>
+                    </div>
+
+                    <div class="api-note">
+                        ✓ Analysis powered by advanced C++ comparison algorithms<br>
+                        📊 Real-time data processing and intelligent recommendations
+                    </div>
+                </div>
+            `;
+
+            container.classList.remove('hidden');
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Override the default comparison display
+        document.addEventListener('DOMContentLoaded', () => {
+            // Enhance the existing app functionality
+            if (app && app.showComparisonResult) {
+                app.showComparisonResult = showEnhancedComparison;
+            }
+        });
+    </script>
+</body>
+</html>
