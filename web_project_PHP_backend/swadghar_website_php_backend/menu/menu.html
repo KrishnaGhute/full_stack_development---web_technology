@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Menu — Swaad Ghar</title>
+  <meta name="description" content="Our popular Indian recipes — Swaad Ghar">
+  <link rel="icon" href="https://png.pngtree.com/png-vector/20240617/ourlarge/pngtree-vector-style-kitchen-chef-professional-logo-design-png-image_12748217.png" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="https://png.pngtree.com/png-vector/20240617/ourlarge/pngtree-vector-style-kitchen-chef-professional-logo-design-png-image_12748217.png">
+  <meta name="theme-color" content="#fff8f0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-wrap"><img class="site-logo" src="https://png.pngtree.com/png-vector/20240617/ourlarge/pngtree-vector-style-kitchen-chef-professional-logo-design-png-image_12748217.png" alt="Swaad Ghar logo"><span>Swaad Ghar</span></span>
+      </a>
+      <button id="mobile-toggle" class="mobile-toggle">☰</button>
+  <nav class="site-nav"><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="/mywebsite/logout.php">Logout</a></li></ul></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="menu-grid">
+      <h1>Our Recipes</h1>
+      <div class="grid">
+        <!-- 8 recipe cards -->
+        <div class="recipe-card" data-id="paneer">
+          <img src="https://img-cdn.publive.online/fit-in/640x430/filters:format(webp)/sanjeev-kapoor/media/media_files/OV8UWxyPaTllCjZ5LxAw.JPG" alt="Paneer Butter Masala">
+          <h3>Paneer Butter Masala</h3>
+          <p>Soft paneer cubes in a velvety tomato and cream gravy.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+
+        <div class="recipe-card" data-id="biryani">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsbRtZENpBw9uU-B-oZaPGN_WiiZMil8ahWQ&s" alt="Chicken Biryani">
+          <h3>Chicken Biryani</h3>
+          <p>Aromatic basmati rice layered with spiced chicken.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+
+        <div class="recipe-card" data-id="dosa">
+          <img src="https://t3.ftcdn.net/jpg/03/97/46/66/360_F_397466683_4U8hMaUgWdFPNc8KMKUQ4aH2qR1yG0sA.jpg" alt="Masala Dosa">
+          <h3>Masala Dosa</h3>
+          <p>Crispy fermented crepe stuffed with spiced potato filling.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+
+        <div class="recipe-card" data-id="chole">
+          <img src="https://bhojmasale.com/cdn/shop/articles/authentic-chole-recipe-a-step-by-step-guide-947487_1024x1024.jpg?v=1739152896" alt="Chole Bhature">
+          <h3>Chole Bhature</h3>
+          <p>Spicy chickpea curry served with fried bread.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+
+        <div class="recipe-card" data-id="rajma">
+          <img src="https://shwetainthekitchen.com/wp-content/uploads/2020/12/Rajma-Masala.jpg" alt="Rajma Chawal">
+          <h3>Rajma Chawal</h3>
+          <p>Comforting red kidney bean curry over steamed rice.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+
+        <div class="recipe-card" data-id="palak">
+          <img src="https://img.freepik.com/premium-photo/lasooni-palak-recipe-dhaba-style-garlic-spinach-curry-indian-main-course-served-with-naan_466689-85138.jpg" alt="Palak Paneer">
+          <h3>Palak Paneer</h3>
+          <p>Paneer in a smooth spinach gravy with warming spices.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+
+        <div class="recipe-card" data-id="gulab">
+          <img src="https://i.ytimg.com/vi/jkmTTHwqxIU/maxresdefault.jpg" alt="Gulab Jamun">
+          <h3>Gulab Jamun</h3>
+          <p>Soft milk dumplings soaked in cardamom-scented sugar syrup.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+
+        <div class="recipe-card" data-id="naan">
+          <img src="https://www.cookwithmanali.com/wp-content/uploads/2014/11/Restaurant-Style-Naan.jpg" alt="Butter Naan">
+          <h3>Butter Naan</h3>
+          <p>Fluffy oven-baked flatbread brushed with butter.</p>
+          <button class="btn open-recipe">View</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal container -->
+  <div id="recipe-modal" class="modal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-content">
+        <h2 id="modal-title"></h2>
+        <img id="modal-img" src="" alt="">
+        <p id="modal-meta"></p>
+        <h4>Ingredients</h4>
+        <ul id="modal-ingredients"></ul>
+        <h4>Method</h4>
+        <ol id="modal-steps"></ol>
+        <!-- Video will be injected here by script.js -->
+        <div class="modal-video" id="modal-video" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Swaad Ghar</strong>
+        <address>123 Spice Lane, Little India, City</address>
+      </div>
+      <div>
+        <p>&copy; <span id="year"></span> Swaad Ghar — All rights reserved.</p>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="facebook">FB</a>
+        <a href="#" aria-label="instagram">IG</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

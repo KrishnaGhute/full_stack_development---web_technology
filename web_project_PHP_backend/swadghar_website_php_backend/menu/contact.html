@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Swaad Ghar</title>
+  <meta name="description" content="Get in touch with Swaad Ghar, your home for authentic Indian home-cooked meals.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin:0; background:#fff8f0; color:#333; }
+    a { text-decoration:none; color:inherit; }
+    .container { max-width:1200px; margin:0 auto; padding:1rem; }
+    header { background:#fff; padding:1rem 0; border-bottom:1px solid #eee; }
+    .brand-wrap img { width:50px; vertical-align:middle; margin-right:10px; }
+    nav ul { list-style:none; display:flex; gap:1rem; }
+    nav a:hover { color:#e67e22; transition:0.3s; }
+    h1,h2,h3 { color:#b33a0b; }
+    .contact-intro { text-align:center; margin:2rem 0; font-size:1.1rem; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem; }
+    form { background:#fff4e6; padding:2rem; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); }
+    form label { display:block; margin-bottom:0.5rem; font-weight:600; }
+    form input, form textarea { width:100%; padding:0.75rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:5px; font-size:1rem; }
+    form input:focus, form textarea:focus { border-color:#e67e22; outline:none; box-shadow:0 0 5px rgba(230,126,34,0.5); }
+    form button { background:#e67e22; color:#fff; padding:0.75rem 1.5rem; border:none; border-radius:5px; cursor:pointer; transition:0.3s; font-size:1rem; }
+    form button:hover { background:#cf6f17; }
+    .feedback-message { margin-top:0.5rem; font-weight:600; }
+    .feedback-message.green { color:green; }
+    .feedback-message.red { color:red; }
+    .contact-info { background:#fff4e6; padding:2rem; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); }
+    .contact-info p, .contact-info address { margin:0.5rem 0; }
+    .contact-info a { color:#e67e22; font-weight:600; }
+    .map iframe { width:100%; height:300px; border:0; border-radius:10px; margin-top:1rem; }
+    .social-links { display:flex; gap:1rem; margin-top:1rem; }
+    .social-links a { display:inline-block; padding:0.5rem 1rem; background:#e67e22; color:#fff; border-radius:5px; transition:0.3s; }
+    .social-links a:hover { background:#cf6f17; }
+    .faq { margin-top:3rem; }
+    .faq-item { margin-bottom:1rem; border-bottom:1px solid #eee; padding-bottom:0.5rem; }
+    .faq-item button { background:none; border:none; width:100%; text-align:left; font-weight:600; font-size:1rem; cursor:pointer; color:#b33a0b; }
+    .faq-item p { display:none; margin-top:0.5rem; }
+    footer { background:#fff; padding:1rem 0; border-top:1px solid #eee; text-align:center; margin-top:2rem; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-wrap"><img class="site-logo" src="https://png.pngtree.com/png-vector/20240617/ourlarge/pngtree-vector-style-kitchen-chef-professional-logo-design-png-image_12748217.png" alt="Swaad Ghar logo"><span>Swaad Ghar</span></span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="/mywebsite/logout.php">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container contact-page">
+  <h1>Contact Us</h1>
+  <p class="contact-intro">
+    We love hearing from our food lovers! Whether it's feedback, orders, or inquiries, our family at Swaad Ghar is here to help. Reach out via form, call, WhatsApp, or social media.
+  </p>
+
+  <div class="contact-grid">
+    <!-- Contact Form -->
+   <form id="contact-form" class="contact-form">
+    <h1>Contact Form</h1>
+  <input type="text" name="name" id="name" placeholder="Your Name" required>
+  <input type="email" name="email" id="email" placeholder="Your Email" required>
+  <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+  
+  <button type="submit" class="btn">Send Message</button>
+
+  <p id="contact-feedback" class="feedback-message"></p>
+  <div class="contact-note">
+    <p><strong>Have a question or want to share your recipe ideas?</strong></p>
+    <p>Reach out to <strong>Asha Sharma</strong>, our Head Cook & Recipe Keeper. She loves hearing from fellow food enthusiasts and will get back to you as soon as possible!</p>
+</div>
+
+</form>
+
+
+
+    <!-- Contact Info & Map -->
+    <div class="contact-info">
+      <h3>Visit or Reach Us</h3>
+      <p><strong>Address:</strong> 123 Spice Lane, Little India, City</p>
+      <p><strong>Hours:</strong> Mon-Sat: 10:00-21:00 | Sun: 10:00-18:00</p>
+      <p><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></p>
+      <p><strong>Email:</strong> <a href="mailto:hello@swaadghar.example">hello@swaadghar.example</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/15551234567" target="_blank">Chat with us</a></p>
+
+      <div class="map">
+        <iframe title="Swaad Ghar Location" src="https://maps.google.com/maps?q=New%20Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+      </div>
+
+      <div class="social-links">
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button>Can I order a recipe kit for home cooking?</button>
+    <p>Yes! We provide select recipe kits with ingredients and instructions. Check our menu or contact us to order.</p>
+  </div>
+
+  <div class="faq-item">
+    <button>Do you provide homemade Indian food for events?</button>
+    <p>Absolutely! We cater for birthdays, small gatherings, and events. Contact us for custom menus and pricing.</p>
+  </div>
+
+  <div class="faq-item">
+    <button>Are your recipes vegetarian or customizable?</button>
+    <p>Most of our recipes are vegetarian, and many can be customized for vegan or dietary preferences. Let us know your needs!</p>
+  </div>
+
+  <div class="faq-item">
+    <button>Can I get recipe suggestions or cooking tips?</button>
+    <p>Yes! Explore our blog and recipe pages for tips, tricks, and variations to make your cooking fun and easy.</p>
+  </div>
+
+  <div class="faq-item">
+    <button>How fresh are your ingredients?</button>
+    <p>We use only fresh, high-quality ingredients sourced daily. Our focus is on authentic, homemade taste for every dish.</p>
+  </div>
+</section>
+
+</main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Swaad Ghar</strong>
+        <address>123 Spice Lane, Little India, City</address>
+      </div>
+      <div>
+        <p>&copy; <span id="year"></span> Swaad Ghar — All rights reserved.</p>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="facebook">FB</a>
+        <a href="#" aria-label="instagram">IG</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+// Contact form submission
+const form = document.getElementById('contact-form');
+const feedback = document.getElementById('contact-feedback');
+
+if(form){
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+
+    let formData = new FormData(form);
+
+    fetch("contact.php", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.status === "success"){
+        feedback.textContent = data.message;
+        feedback.className = "feedback-message green";
+        form.reset();
+      } else {
+        feedback.textContent = data.message;
+        feedback.className = "feedback-message red";
+      }
+    })
+    .catch(err => {
+      feedback.textContent = "Error connecting to server.";
+      feedback.className = "feedback-message red";
+    });
+  });
+}
+
+// FAQ toggle functionality
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const button = item.querySelector('button');
+  const answer = item.querySelector('p');
+
+  // Initially hide all answers
+  answer.style.display = 'none';
+
+  button.addEventListener('click', () => {
+    const isOpen = answer.style.display === 'block';
+    
+    // Close all answers
+    faqItems.forEach(i => i.querySelector('p').style.display = 'none');
+
+    // Toggle current answer
+    answer.style.display = isOpen ? 'none' : 'block';
+  });
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* styles.css - cleaned and simplified */
+
+/* Final clean stylesheet for MenuSite */
+
+/* Global */
+* { box-sizing: border-box; }
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+
+/* Header / Navigation */
+header { background: #333; padding: 20px; }
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo a { color: #fff; font-size: 24px; text-decoration: none; }
+.nav-links { list-style: none; display: flex; margin: 0; padding: 0; }
+.nav-links li { margin: 0 20px; }
+.nav-links a { color: #fff; text-decoration: none; }
+.mobile-nav { display: none; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; flex-direction: column; align-items: center; background: #333; width: 100%; position: absolute; top: 60px; left: 0; padding: 20px 0; }
+  .nav-links li { margin: 10px 0; }
+  .mobile-nav { display: block; }
+}
+
+/* Mobile menu visible state */
+.nav-links.nav-active { display: flex; opacity: 1; transition: opacity 0.25s ease-in-out; }
+
+/* Sections */
+.hero { background: url('https://via.placeholder.com/1200x600') center/cover no-repeat; color: #fff; text-align: center; padding: 100px 20px; }
+.about, .menu, .blog { padding: 50px 20px; }
+.about { background: #f8f8f8; text-align: center; }
+
+/* Footer */
+footer { background: #333; color: #fff; text-align: center; padding: 20px; }
+.social-icons a { color: #fff; margin: 0 10px; font-size: 1.2rem; }
+
+/* Utilities */
+.btn { background: #ff6347; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; }
+.btn:hover { background: #e53e3e; }
+
+.feedback-message { margin-top: 10px; font-weight: 600; }
+.feedback-message.green { color: green; }
+.feedback-message.red { color: red; }
+
+html { scroll-behavior: smooth; }
+
+/* Blog extras */
+.blog { background: #f0f0f0; }
+.blog h2 { font-size: 2.5rem; margin-bottom: 30px; }
+.blog-post { max-width: 800px; margin: 0 auto 30px; text-align: left; }
+.blog-post h3 { font-size: 2rem; color: #333; }
+.blog-post p { font-size: 1.1rem; color: #666; line-height: 1.6; }
+.blog-post .btn { margin-top: 10px; }
+/* Blog post specifics (single, clean block) */
+.blog-post { margin-bottom: 30px; text-align: left; max-width: 800px; margin: 0 auto; }
+.blog-post h3 { font-size: 2rem; color: #333; }
+.blog-post p { font-size: 1.1rem; color: #666; line-height: 1.6; }
+.blog-post .btn { margin-top: 10px; }
+*** End Patch
+
+/* Blog post specifics (single, clean block) */
+.blog-post { margin-bottom: 30px; text-align: left; max-width: 800px; margin: 0 auto; }
+.blog-post h3 { font-size: 2rem; color: #333; }

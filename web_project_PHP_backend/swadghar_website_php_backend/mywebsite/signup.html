@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <style>
+       /* Signup page — Swaad Ghar theme */
+:root {
+    --bg: #fff8f0;
+    --maroon: #7b1f18;
+    --gold: #c97b27;
+    --brown: #3a2b28;
+    --muted: #6b6b6b;
+    --card: #fff;
+    --radius: 12px;
+    --shadow: 0 12px 30px rgba(56,34,23,0.12);
+}
+
+body {
+    font-family: 'Poppins', system-ui, Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bg), #fffefc 1200px);
+    color: var(--brown);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: var(--card);
+    padding: 32px 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: var(--maroon);
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e6e2de;
+    outline: none;
+    transition: 0.22s ease;
+}
+
+input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 6px 18px rgba(123,31,24,0.08);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, var(--maroon), var(--gold));
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.22s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(56,34,23,0.08);
+}
+
+p {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+p a {
+    color: var(--maroon);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+
+
+<form action="signup_process.php" method="post">
+    <h2>Register</h2>
+    <label>Email:</label><br>
+    <input type="text" name="email" required><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br>
+
+    <button type="submit">Sign Up</button>
+    <p>Already have an account? <a href="signin.html">Login Here</a></p>
+</form>
+
+
+<script>
+// Wait until the DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Get the form element
+    const signupForm = document.querySelector("form");
+
+    // Add submit event listener
+    signupForm.addEventListener("submit", function(event) {
+        const email = document.querySelector("input[name='email']").value;
+        const password = document.querySelector("input[name='password']").value;
+
+        // Basic validation
+        if(email.trim() === "" || password.trim() === "") {
+            alert("Both email and password are required!");
+            event.preventDefault(); // prevent form submission
+        } else if(password.length < 4) {
+            alert("Password must be at least 4 characters long!");
+            event.preventDefault();
+        }
+    });
+
+});</script>
+</body>
+</html>
