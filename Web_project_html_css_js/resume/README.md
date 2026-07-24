@@ -80,7 +80,15 @@ After opening the HTML file in a browser, the resume page will render with all s
 
 > Screenshot placeholder for the final resume page.
 
-![Screenshots Placeholder](https://via.placeholder.com/1200x700?text=Screenshot+Placeholder)
+### Education Section
+<p align="center">
+  <img src="assets/education.png" alt="Resume Project Banner" width="100%" />
+</p>
+
+### Project Section
+<p align="center">
+  <img src="assets/project.png" alt="Resume Project Banner" width="100%" />
+</p>
 
 ## Results
 
