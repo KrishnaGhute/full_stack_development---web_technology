@@ -149,7 +149,7 @@ A dealership platform where a static web frontend communicates with a C++ backen
 ### Preview
 
 <p align="center">
-<img src="web_project_cpp_backend/truck/photo/gallery.png" width="90%">
+<img src="web_project_CPP_backend/truck/photo/gallery.png" width="90%">
 </p>
 
 Repository
@@ -178,7 +178,7 @@ An arcade racing game built using C++ and SFML demonstrating object-oriented pro
 ### Preview
 
 <p align="center">
-<img src="web_project_cpp_backend/high_way_racing/photo/home_half.png" width="90%">
+<img src="web_project_CPP_backend/high_way_racing/photo/home_half.png" width="90%">
 </p>
 
 Repository
@@ -211,7 +211,7 @@ A restaurant management website built using PHP, MySQL, HTML, CSS, and JavaScrip
 ### Preview
 
 <p align="center">
-<img src="web_project_PHP_backend/swadghar_website_php_backend/image/home.png" width="90%">
+<img src="web_project_PHP_backend/swadghar_website_php_backend/menu/image/home.png" width="90%">
 </p>
 
 Repository
