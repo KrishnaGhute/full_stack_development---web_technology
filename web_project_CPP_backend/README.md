@@ -70,7 +70,7 @@ A desktop arcade racing game developed using C++ and SFML that focuses on real-t
 ### Preview
 
 <p align="center">
-<img src="assets/high_way_racing/photo/car_boost.png" width="90%">
+<img src="high_way_racing/photo/car_boost.png" width="90%">
 </p>
 
 ### Key Features
