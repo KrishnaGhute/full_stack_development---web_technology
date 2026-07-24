@@ -19,7 +19,7 @@
 
 > Placeholder for a project banner or hero image.
 
-![Project Banner Placeholder](https://via.placeholder.com/1200x400?text=TruckHub+Project+Banner)
+![Project Banner Placeholder](photo/gallery.png)
 
 ## Overview
 
