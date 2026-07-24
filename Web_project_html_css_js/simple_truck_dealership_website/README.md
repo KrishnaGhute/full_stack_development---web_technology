@@ -1,15 +1,15 @@
 # GK Transports - Tata Truck Dealership Website
 
 <p align="center">
-  <img src="https://via.placeholder.com/1200x400.png?text=GK+Transports+Project+Banner" alt="GK Transports Project Banner" width="100%" />
-</p>
-
-<p align="center">
   <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
   <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
   <img alt="Static Site" src="https://img.shields.io/badge/Type-Static%20Frontend-38B2AC?style=for-the-badge" />
   <img alt="Status" src="https://img.shields.io/badge/Status-Prototype%20Website-4CAF50?style=for-the-badge" />
+</p>
+
+<p align="center">
+  <img src="photo/home.png" alt="Resume Project Banner" width="100%" />
 </p>
 
 A responsive, customer-facing dealership website for showcasing Tata commercial trucks, finance estimates, service booking, and parts browsing through a polished static frontend experience.
@@ -116,9 +116,32 @@ Once the page is opened:
 
 ## Screenshots
 
+### Home
 <p align="center">
-  <img src="https://via.placeholder.com/1200x700.png?text=Website+Screenshot+Placeholder" alt="Website Screenshot Placeholder" width="100%" />
+  <img src="photo/home.png" alt="Home" width="100%" />
 </p>
+
+### Parts
+<p align="center">
+  <img src="photo/Parts.png" alt="Parts" width="100%" />
+</p>
+
+### Compare
+<p align="center">
+  <img src="photo/compare.png" alt="Compare" width="100%" />
+</p>
+
+### Stock & Finance
+<p align="center">
+  <img src="photo/stock & finance.png" alt="Stock & Finance" width="100%" />
+</p>
+
+
+# Map
+<p align="center">
+  <img src="photo/map.png" alt="Map" width="100%" />
+</p>
+
 
 ## Results
 
