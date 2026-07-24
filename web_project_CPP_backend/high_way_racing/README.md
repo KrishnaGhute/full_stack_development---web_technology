@@ -346,6 +346,8 @@ This project is intended for educational and portfolio purposes.
 
 See the **LICENSE** file for usage terms.
 
+<img src="(https://img.shields.io/badge/License-Unspecified-lightgrey?style=for-the-badge](https://github.com/KrishnaGhute/full_stack_development---web_technology/blob/main/web_project_CPP_backend/high_way_racing/LICENSE)" alt="License" />
+
 ---
 
 <p align="center">
