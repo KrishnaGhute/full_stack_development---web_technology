@@ -166,7 +166,24 @@ It is well-suited as a portfolio project, prototype, or educational frontend exa
 
 ## Author
 
-GK Transports
+**Krishna Ghute**
+
+- Email: krishnavijayghute@gmail.com
+
+💼 LinkedIn
+https://www.linkedin.com/in/krishna-ghute-b72199370/
+
+▶️ YouTube
+https://www.youtube.com/@Krishna_Ghute
+
+📸 Instagram
+https://www.instagram.com/krishna_ghute_ds/
+
+📊 Kaggle
+https://www.kaggle.com/krishnaghuteds
+
+💻 GitHub
+https://github.com/KrishnaGhute
 
 ## License
 
