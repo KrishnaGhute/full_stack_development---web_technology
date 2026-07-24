@@ -212,7 +212,7 @@ https://github.com/KrishnaGhute
 
 ## License
 
-No license file was found in the repository. Please add an appropriate open-source license before public distribution.
+No license.
 
 ---
 
