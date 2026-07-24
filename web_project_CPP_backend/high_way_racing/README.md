@@ -23,7 +23,7 @@
 > Replace with your gameplay banner.
 
 <p align="center">
-<img src="photo/banner.png" width="100%">
+<img src="photo/home_half.png" width="100%">
 </p>
 
 ---
@@ -258,21 +258,27 @@ Difficulty scaling is based on
 
 # Screenshots
 
-## Home Screen
+## Home Screen on web
 
-![](photo/home.png)
+![](photo/home_half.png)
 
 ---
 
-## Gameplay
+## Gameplay without Boost
 
-![](photo/gameplay.png)
+![](photo/home_half.png)
+
+---
+
+## Gameplay with Boost
+
+![](photo/car_boost.png)
 
 ---
 
 ## Game Over
 
-![](photo/gameover.png)
+![](photo/restart_half.png)
 
 ---
 
