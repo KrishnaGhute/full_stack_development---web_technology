@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="Web_project_html_css_js/resume/assets/intro.png" alt="Project Banner Placeholder" width="100%" />
+  <img src="[Web_project_html_css_js/resume/assets/intro.png](https://github.com/KrishnaGhute/full_stack_development---web_technology/blob/main/Web_project_html_css_js/resume/assets/intro.png)" alt="Project Banner Placeholder" width="100%" />
 </p>
 
 ## Overview
