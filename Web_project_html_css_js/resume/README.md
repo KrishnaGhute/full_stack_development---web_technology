@@ -35,21 +35,6 @@ The implementation is intentionally lightweight and dependency-free, making it e
 - HTML
 - CSS
 
-### Frameworks
-- None found in the current repository
-
-### Libraries
-- None found in the current repository
-
-### Databases
-- None found in the current repository
-
-### APIs
-- No API integration found in the current repository
-
-### Deployment Platforms
-- No deployment configuration found in the current repository
-
 ### Development Tools
 - VS Code
 - Modern web browser
@@ -123,7 +108,22 @@ Potential enhancements for the next version include:
 **Krishna Ghute**
 
 - Email: krishnavijayghute@gmail.com
-- LinkedIn: https://www.linkedin.com/in/krishna-ghute-b72199370
+
+💼 LinkedIn
+https://www.linkedin.com/in/krishna-ghute-b72199370/
+
+▶️ YouTube
+https://www.youtube.com/@Krishna_Ghute
+
+📸 Instagram
+https://www.instagram.com/krishna_ghute_ds/
+
+📊 Kaggle
+https://www.kaggle.com/krishnaghuteds
+
+💻 GitHub
+https://github.com/KrishnaGhute
+
 
 ## License
 
