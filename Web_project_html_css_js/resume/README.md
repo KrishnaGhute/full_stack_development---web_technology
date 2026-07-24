@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="https://via.placeholder.com/1200x400?text=Project+Banner+Placeholder" alt="Project Banner Placeholder" width="100%" />
+  <img src="Web_project_html_css_js/resume/assets/intro.png" alt="Project Banner Placeholder" width="100%" />
 </p>
 
 ## Overview
