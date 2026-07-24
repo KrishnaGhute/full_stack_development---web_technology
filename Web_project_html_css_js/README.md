@@ -1,156 +1,186 @@
-# GK Transports - Tata Truck Dealership Website
+# 🌐 Web Projects Portfolio
 
 <p align="center">
-  <img src="https://via.placeholder.com/1200x400.png?text=GK+Transports+Project+Banner" alt="GK Transports Project Banner" width="100%" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Projects-2-success?style=for-the-badge" />
 </p>
 
 <p align="center">
-  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
-  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
-  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img alt="Static Site" src="https://img.shields.io/badge/Type-Static%20Frontend-38B2AC?style=for-the-badge" />
-  <img alt="Status" src="https://img.shields.io/badge/Status-Prototype%20Website-4CAF50?style=for-the-badge" />
+  A collection of frontend web development projects built using HTML5, CSS3, and Vanilla JavaScript.
 </p>
 
-A responsive, customer-facing dealership website for showcasing Tata commercial trucks, finance estimates, service booking, and parts browsing through a polished static frontend experience.
+---
 
-## Overview
+# 📖 Overview
 
-GK Transports is a dealership website prototype designed to present Tata truck models in a clean digital showroom format. The project focuses on product visibility, customer engagement, and lead-generation-style interactions through a single-page frontend interface.
+This repository serves as a collection of frontend web development projects showcasing responsive user interface design, interactive JavaScript functionality, and modern web development practices.
 
-The implementation is built using plain HTML, CSS, and JavaScript, with no backend or database layer. As a result, it serves as a frontend showcase and UX prototype rather than a full production commerce system.
+The projects are built without frontend frameworks, focusing on core web technologies to demonstrate strong fundamentals in HTML, CSS, and JavaScript.
 
-## Features
+The repository currently contains **two independent projects**, each with its own dedicated folder and documentation.
 
-- Interactive sidebar navigation
-- Embedded YouTube introduction section
+---
+
+# 📂 Projects Included
+
+## 👨‍💻 1. Professional Resume Website
+
+A lightweight single-page personal resume designed for portfolio presentation and recruiter engagement.
+
+### Preview
+
+<p align="center">
+<img src="resume/assets/intro.png" width="90%">
+</p>
+
+### Highlights
+
+- Professional profile
+- Bio-data section
+- Technical skills
+- Education timeline
+- Academic achievements
+- Project portfolio
+- Contact information
+- Fully responsive layout
+- Single-file architecture
+- Dependency-free design
+
+### Technology
+
+- HTML5
+- CSS3
+
+---
+
+## 🚛 2. GK Transports – Truck Dealership Website
+
+A commercial-style dealership website designed to simulate the digital experience of browsing and exploring Tata commercial vehicles.
+
+### Preview
+
+<p align="center">
+<img src="simple_truck_dealership_website/photo/home.png" width="90%">
+</p>
+
+### Highlights
+
+- Responsive dealership website
+- Interactive navigation
 - Auto-scrolling truck gallery
-- Detailed truck model cards with specifications and pricing
-- Stock availability status table
-- EMI calculator for financing estimation
-- Truck comparison section
-- Service booking form
-- Parts and accessories gallery
-- Client-side cart summary
-- Installation booking section
-- Embedded showroom map
-- FAQ accordion
-- Floating social action buttons for WhatsApp, Instagram, and LinkedIn
+- Truck specifications & pricing
+- Finance EMI Calculator
+- Truck comparison
+- Parts & Accessories section
+- FAQ section
+- Service booking interface
+- Google Maps integration
+- Embedded YouTube video
+- Floating social media actions
 
-## Tech Stack
+### Technology
 
-### Frontend
 - HTML5
 - CSS3
 - Vanilla JavaScript
+- Google Fonts API
+- Google Maps Embed API
+- YouTube IFrame API
 
-### External Integrations
+---
+
+# 💻 Tech Stack
+
+### Languages
+
+- HTML5
+- CSS3
+- JavaScript
+
+### Development Tools
+
+- Visual Studio Code
+- Chrome DevTools
+
+### APIs & Services
+
 - Google Fonts
-- Google Maps Embed
-- YouTube Embed
-- External media assets from public image URLs
+- Google Maps Embed API
+- YouTube IFrame API
 
-### Notes
-- No framework is used.
-- No backend service is present.
-- No database is configured in the current repository.
+---
 
-### High-Level Flow
-
-1. The user opens the website in a browser.
-2. The HTML structure renders the dealership layout.
-3. CSS controls styling and responsiveness.
-4. JavaScript powers the interactive experience, including:
-   - menu toggle
-   - EMI calculation
-   - cart logic
-   - FAQ interaction
-   - comparison output
-
-## Folder Structure
+# 📁 Repository Structure
 
 ```text
-.
+Web_project_html_css_js/
+│
 ├── README.md
-└── truck_dealer_website.html
+│
+├── resume/
+│   ├── README.md
+│   └── ...
+│
+└── simple_truck_dealership_website/
+    ├── README.md
+    └── ...
 ```
 
-### File Description
+---
 
-- `README.md` — repository documentation
-- `truck_dealer_website.html` — the complete single-file frontend implementation containing markup, styles, and scripts
+# 🎯 Repository Objectives
 
-## Installation
+- Demonstrate frontend web development skills.
+- Build responsive user interfaces.
+- Practice JavaScript-based interactivity.
+- Develop portfolio-ready web applications.
+- Showcase clean project organization and documentation.
 
-### Prerequisites
+---
 
-- A modern web browser such as Chrome, Edge, Firefox, or Safari
+# 🚀 Future Improvements
 
-### Steps
+- Add more frontend projects.
+- Improve UI/UX across existing applications.
+- Introduce backend integrations.
+- Deploy projects online.
+- Expand the portfolio with full-stack applications.
 
-1. Clone or download the repository.
-2. Open `truck_dealer_website.html` in your browser.
-3. Optionally, serve it locally using:
+---
 
-```bash
-python -m http.server 8000
-```
+# 👨‍💻 Author
 
-Then visit:
+**Krishna Ghute**
 
-```text
-http://localhost:8000
-```
+📧 Email  
+krishnavijayghute@gmail.com
 
-## Usage
+💼 LinkedIn  
+https://www.linkedin.com/in/krishna-ghute-b72199370/
 
-Once the page is opened:
+💻 GitHub  
+https://github.com/KrishnaGhute
 
-1. Navigate between sections using the menu button.
-2. Explore truck models and specifications.
-3. Use the finance calculator to estimate monthly EMI.
-4. Compare different models.
-5. Add accessories to the cart.
-6. Book service or installation.
-7. Review location, FAQ, and contact information.
+📊 Kaggle  
+https://www.kaggle.com/krishnaghuteds
 
-## Screenshots
+📸 Instagram  
+https://www.instagram.com/krishna_ghute_ds/
 
-<p align="center">
-  <img src="https://via.placeholder.com/1200x700.png?text=Website+Screenshot+Placeholder" alt="Website Screenshot Placeholder" width="100%" />
-</p>
+▶️ YouTube  
+https://www.youtube.com/@Krishna_Ghute
 
-## Results
-
-This project delivers a clean and interactive dealership landing page experience with:
-
-- strong visual branding
-- customer-focused information flow
-- static UI interactivity
-- lead-generation style presentation
-
-It is well-suited as a portfolio project, prototype, or educational frontend example.
-
-## Future Scope
-
-- Add a real backend for form submissions and inventory data
-- Replace hardcoded demo content with a managed database
-- Add user authentication for admin or dealership staff
-- Integrate payment processing for accessories
-- Introduce search, filters, and product sorting
-- Deploy to GitHub Pages, Netlify, or Vercel
-- Add analytics for traffic and lead tracking
-
-## Author
-
-GK Transports
+---
 
 ## License
 
-No license file was found in the repository. License information is currently not specified.
+No license specified.
 
 ---
 
 <p align="center">
-  <strong>Built with HTML, CSS, and JavaScript for a polished dealership showcase experience.</strong>
+<b>Web Projects Portfolio</b><br>
+A collection of frontend web applications showcasing responsive web design and interactive user experiences using HTML5, CSS3, and Vanilla JavaScript.
 </p>
