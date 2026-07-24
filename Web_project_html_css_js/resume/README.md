@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Status-Static%20Website-blue?style=for-the-badge" alt="Status" />
   <img src="https://img.shields.io/badge/License-Unspecified-lightgrey?style=for-the-badge" alt="License" />
 </p>
-
+![Dashboard](Web_project_html_css_js/resume/assets/intro.png)
 <p align="center">
   <img src="[Web_project_html_css_js/resume/assets/intro.png](https://github.com/KrishnaGhute/full_stack_development---web_technology/blob/main/Web_project_html_css_js/resume/assets/intro.png)" alt="Project Banner Placeholder" width="100%" />
 </p>
