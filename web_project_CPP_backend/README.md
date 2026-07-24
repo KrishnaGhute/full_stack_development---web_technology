@@ -1,72 +1,115 @@
-# 🏎️ 3-Lane Highway Racing Game
+# 💻 C++ Development Portfolio
 
 <p align="center">
-  <img src="https://img.shields.io/badge/C%2B%2B-17-blue?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++17"/>
-  <img src="https://img.shields.io/badge/SFML-2.5+-green?style=for-the-badge" alt="SFML"/>
-  <img src="https://img.shields.io/badge/Game-Desktop-orange?style=for-the-badge" alt="Desktop"/>
-  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status"/>
+  <img src="https://img.shields.io/badge/C%2B%2B-17-blue.svg" alt="C++17" />
+  <img src="https://img.shields.io/badge/SFML-Game%20Development-green.svg" alt="SFML" />
+  <img src="https://img.shields.io/badge/HTTP%20Backend-httplib-orange.svg" alt="httplib" />
+  <img src="https://img.shields.io/badge/Projects-2-success.svg" alt="Projects" />
 </p>
 
 <p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#features">Features</a> •
-  <a href="#tech-stack">Tech Stack</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#game-controls">Controls</a> •
-  <a href="#future-scope">Future Scope</a>
-</p>
-
----
-
-# Project Banner
-
-> Replace with your gameplay banner.
-
-<p align="center">
-<img src="photo/banner.png" width="100%">
+  <a href="#overview">Overview</a> ·
+  <a href="#projects-included">Projects</a> ·
+  <a href="#common-tech-stack">Tech Stack</a> ·
+  <a href="#repository-structure">Repository Structure</a> ·
+  <a href="#future-scope">Future Scope</a> ·
+  <a href="#author">Author</a>
 </p>
 
 ---
 
 # Overview
 
-3-Lane Highway Racing Game is a desktop arcade racing game developed using **C++** and **SFML**.
+This repository serves as a collection of C++ projects developed to demonstrate software engineering concepts, object-oriented programming, backend development, and desktop application development.
 
-The project simulates highway driving where players avoid dynamically generated traffic while increasing their score through distance travelled, vehicle avoidance, and speed bonuses.
-
-The game demonstrates real-time game development concepts including collision detection, procedural traffic generation, game loops, particle effects, object-oriented programming, mathematical modelling, and responsive keyboard controls.
+The projects showcase practical implementations ranging from HTTP backend systems to real-time game development using modern C++ libraries. Each project is maintained in its own folder with detailed documentation and source code.
 
 ---
 
-# Features
+# Projects Included
 
-- 🚗 Three-lane highway system
-- 🚛 Five unique vehicle categories
-- 🎯 Dynamic collision detection
-- ⚡ Progressive difficulty scaling
-- 🎮 Smooth keyboard controls
-- 🌟 Particle effects
-- 📈 Score & Level system
-- 🚦 Procedural traffic generation
-- 🧮 Mathematical vehicle spawning
-- 💥 Crash animation effects
-- 🎵 SFML multimedia support
-- 🖥️ Native desktop performance
+## 🚛 TruckHub
+
+### Overview
+
+TruckHub is a dealership-style web application that combines a responsive frontend with a C++ backend. The project demonstrates how C++ can be used to power REST-style APIs for inventory management, vehicle comparison, finance calculations, and customer interactions.
+
+### Preview
+
+<p align="center">
+<img src="truck/photo/gallery.png" width="90%">
+</p>
+
+### Key Features
+
+- Responsive dealership website
+- C++ HTTP backend
+- Truck inventory management
+- Finance & EMI calculator
+- Truck comparison system
+- Contact handling
+- JSON API endpoints
+- Lightweight backend architecture
+
+### Technologies Used
+
+- C++17
+- httplib.h
+- HTML5
+- CSS3
+- JavaScript
 
 ---
 
-# Tech Stack
+## 🏎️ 3-Lane Highway Racing Game
 
-## Programming Language
+### Overview
 
+A desktop arcade racing game developed using C++ and SFML that focuses on real-time rendering, procedural traffic generation, collision detection, and object-oriented game development.
+
+### Preview
+
+<p align="center">
+<img src="assets/high_way_racing/photo/car_boost.png" width="90%">
+</p>
+
+### Key Features
+
+- Three-lane highway racing
+- Procedural traffic generation
+- Multiple vehicle categories
+- Dynamic difficulty progression
+- Collision detection
+- Particle effects
+- Score & level system
+- Cross-platform desktop support
+
+### Technologies Used
+
+- C++17
+- SFML
+- Makefile
+- Object-Oriented Programming
+
+---
+
+# Common Tech Stack
+
+## Programming Languages
+
+- C++
 - C++17
 
 ## Libraries
 
-- SFML Graphics
-- SFML Window
-- SFML Audio
-- SFML System
+- SFML
+- httplib.h
+
+## Frontend Technologies
+
+- HTML5
+- CSS3
+- JavaScript
 
 ## Development Tools
 
@@ -74,243 +117,55 @@ The game demonstrates real-time game development concepts including collision de
 - GCC / G++
 - Makefile
 
-## Platform
-
-- Windows
-- Linux
-- macOS
-
 ---
 
-# Architecture Diagram
-
-```mermaid
-flowchart LR
-
-A[Player] --> B[Keyboard Input]
-
-B --> C[Game Engine]
-
-C --> D[Traffic Generation]
-
-C --> E[Vehicle Physics]
-
-C --> F[Collision Detection]
-
-C --> G[Score & Level System]
-
-D --> H[Rendering Engine]
-
-E --> H
-
-F --> H
-
-G --> H
-
-H --> I[SFML Graphics Window]
-
-I --> A
-```
-
----
-
-# Folder Structure
+# Repository Structure
 
 ```text
-3-lane-highway-racing/
-
+cpp_projects/
+│
 ├── README.md
-├── LICENSE
-├── Makefile
-├── highway_racing.cpp
-├── assets/
-│   ├── car.png
-│   ├── truck.png
-│   ├── road.png
-│   └── particles/
-├── photo/
-│   ├── home.png
-│   ├── gameplay.png
-│   ├── gameover.png
-│   └── banner.png
+│
+├── truck/
+│   ├── README.md
+│   └── ...
+│
+└── high_way_racing/
+    ├── README.md
+    └── ...
 ```
-
----
-
-# Installation
-
-## Prerequisites
-
-- C++17 Compiler
-- SFML 2.5+
-- Make
-
----
-
-## Build
-
-Ubuntu
-
-```bash
-sudo apt install libsfml-dev
-
-make
-```
-
-Windows
-
-Configure SFML libraries inside Visual Studio or CodeBlocks and build the project.
-
----
-
-## Run
-
-```bash
-./highway_racing
-```
-
----
-
-# Game Controls
-
-| Key | Action |
-|------|--------|
-| ← | Move Left |
-| → | Move Right |
-| ↑ | Accelerate |
-| ↓ | Brake |
-| Space | Pause |
-| R | Restart |
-| ESC | Exit |
-
----
-
-# Gameplay
-
-The objective is to survive as long as possible by avoiding incoming vehicles.
-
-The player gains points by
-
-- Travelling longer distance
-- Maintaining higher speed
-- Successfully overtaking traffic
-- Reaching higher levels
-
-As the level increases
-
-- Traffic density increases
-- Vehicle speed increases
-- Spawn frequency increases
-- Difficulty becomes more challenging
-
----
-
-# Game Mechanics
-
-## Vehicle Types
-
-- Compact Cars
-- Sedans
-- SUVs
-- Sports Cars
-- Heavy Trucks
-
-Each vehicle has different
-
-- Speed
-- Size
-- Spawn probability
-- Score value
-
----
-
-# Mathematical Model
-
-Traffic generation follows weighted probability.
-
-```
-Spawn Rate
-
-↓
-
-Vehicle Selection
-
-↓
-
-Lane Selection
-
-↓
-
-Collision Safety Check
-
-↓
-
-Spawn Vehicle
-```
-
-Difficulty scaling is based on
-
-- Current Level
-- Player Speed
-- Distance Travelled
-
----
-
-# Screenshots
-
-## Home Screen
-
-![](photo/home.png)
-
----
-
-## Gameplay
-
-![](photo/gameplay.png)
-
----
-
-## Game Over
-
-![](photo/gameover.png)
-
----
-
-# Results
-
-The project demonstrates
-
-- Object-Oriented Programming
-- Real-time Game Loop
-- SFML Graphics Programming
-- Collision Detection
-- Mathematical Traffic Simulation
-- Keyboard Event Handling
-- Procedural Content Generation
-- Desktop Game Development
 
 ---
 
 # Future Scope
 
-Possible improvements
+### TruckHub
 
-- Multiplayer Mode
-- Online Leaderboard
-- Garage System
-- Vehicle Upgrades
-- Weather Effects
-- Night Mode
-- AI Opponent Vehicles
-- Soundtrack
-- Multiple Maps
-- Save Game Feature
+- Database integration
+- Authentication system
+- Admin dashboard
+- Cloud deployment
+- Docker support
+- Inventory analytics
+
+### 3-Lane Highway Racing Game
+
+- AI-controlled traffic
+- Multiplayer mode
+- Weather effects
+- New maps
+- Leaderboard system
+- Soundtrack and advanced visual effects
 
 ---
 
 # Author
 
 **Krishna Ghute**
+
+📧 Email
+
+krishnavijayghute@gmail.com
 
 💼 LinkedIn
 
@@ -324,28 +179,26 @@ https://github.com/KrishnaGhute
 
 https://www.kaggle.com/krishnaghuteds
 
-📸 Instagram
-
-https://www.instagram.com/krishna_ghute_ds/
-
 ▶️ YouTube
 
 https://www.youtube.com/@Krishna_Ghute
 
+📸 Instagram
+
+https://www.instagram.com/krishna_ghute_ds/
+
 ---
 
 # License
+License for Car game read **LICENSE** file.
 
-This project is intended for educational and portfolio purposes.
+No license specified for truck delear website.
 
-See the **LICENSE** file for usage terms.
+These projects are shared for portfolio and educational purposes.
 
 ---
 
 <p align="center">
-
-**3-Lane Highway Racing Game**
-
-Designed using **C++**, **SFML**, and modern game programming principles.
-
+<strong>C++ Development Portfolio</strong><br>
+A collection of C++ projects showcasing backend development, game development, object-oriented programming, and software engineering concepts.
 </p>
