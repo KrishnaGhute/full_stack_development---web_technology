@@ -1,292 +1,351 @@
 # 🏎️ 3-Lane Highway Racing Game
 
-A fast-paced, arcade-style racing game where you navigate through traffic on a 3-lane highway. Available in both **C++ SFML** (native) and **Web** (HTML5 Canvas) versions.
+<p align="center">
+  <img src="https://img.shields.io/badge/C%2B%2B-17-blue?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++17"/>
+  <img src="https://img.shields.io/badge/SFML-2.5+-green?style=for-the-badge" alt="SFML"/>
+  <img src="https://img.shields.io/badge/Game-Desktop-orange?style=for-the-badge" alt="Desktop"/>
+  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status"/>
+</p>
 
-![Game Preview](https://img.shields.io/badge/Platforms-C++%20%7C%20Web-brightgreen) ![License](https://img.shields.io/badge/License-MIT-blue)
+<p align="center">
+  <a href="#overview">Overview</a> •
+  <a href="#features">Features</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#game-controls">Controls</a> •
+  <a href="#future-scope">Future Scope</a>
+</p>
 
-## 🎮 Game Features
+---
 
-- **3-Lane Highway**: Navigate through realistic highway traffic
-- **Procedural Traffic Generation**: Mathematically generated vehicle patterns with different types:
-  - Compact Cars (fast, agile)
-  - Sedans (balanced speed and size) 
-  - SUVs (slow, large, high points)
-  - Sports Cars (very fast, unpredictable)
-  - Trucks (slow, very large, maximum points)
+# Project Banner
 
-- **Progressive Difficulty**: Speed and traffic density increase with levels
-- **Particle Effects**: Visual feedback for crashes, level-ups, and speed effects  
-- **Responsive Controls**: Smooth lane changing and acceleration/braking
-- **Mobile Support**: Touch controls for web version
-- **Score System**: Points for distance traveled, speed, and vehicles avoided
+> Replace with your gameplay banner.
 
-## 🚀 Quick Start
+<p align="center">
+<img src="photo/banner.png" width="100%">
+</p>
 
-### Web Version (Easiest)
-```bash
-# No installation required! Just run:
-make web
+---
 
-# Then open http://localhost:8000 in your browser
+# Overview
+
+3-Lane Highway Racing Game is a desktop arcade racing game developed using **C++** and **SFML**.
+
+The project simulates highway driving where players avoid dynamically generated traffic while increasing their score through distance travelled, vehicle avoidance, and speed bonuses.
+
+The game demonstrates real-time game development concepts including collision detection, procedural traffic generation, game loops, particle effects, object-oriented programming, mathematical modelling, and responsive keyboard controls.
+
+---
+
+# Features
+
+- 🚗 Three-lane highway system
+- 🚛 Five unique vehicle categories
+- 🎯 Dynamic collision detection
+- ⚡ Progressive difficulty scaling
+- 🎮 Smooth keyboard controls
+- 🌟 Particle effects
+- 📈 Score & Level system
+- 🚦 Procedural traffic generation
+- 🧮 Mathematical vehicle spawning
+- 💥 Crash animation effects
+- 🎵 SFML multimedia support
+- 🖥️ Native desktop performance
+
+---
+
+# Tech Stack
+
+## Programming Language
+
+- C++17
+
+## Libraries
+
+- SFML Graphics
+- SFML Window
+- SFML Audio
+- SFML System
+
+## Development Tools
+
+- Visual Studio Code
+- GCC / G++
+- Makefile
+
+## Platform
+
+- Windows
+- Linux
+- macOS
+
+---
+
+# Architecture Diagram
+
+```mermaid
+flowchart LR
+
+A[Player] --> B[Keyboard Input]
+
+B --> C[Game Engine]
+
+C --> D[Traffic Generation]
+
+C --> E[Vehicle Physics]
+
+C --> F[Collision Detection]
+
+C --> G[Score & Level System]
+
+D --> H[Rendering Engine]
+
+E --> H
+
+F --> H
+
+G --> H
+
+H --> I[SFML Graphics Window]
+
+I --> A
 ```
 
-### C++ Version (Best Performance)
-```bash
-# Ubuntu/Debian
-make setup-ubuntu
+---
 
-# macOS  
-make setup-macos
+# Folder Structure
 
-# Then run the game
-make run-cpp
-```
-
-## 📁 Project Structure
-
-```
+```text
 3-lane-highway-racing/
-├── 🌐 Web Version
-│   ├── index.html          # Main game page
-│   ├── game.js             # Complete game logic
-│   ├── style.css           # Modern UI styling
-│   └── config.json         # Game configuration
-├── 🖥️ C++ Version
-│   ├── highway_racing.cpp  # SFML implementation
-│   └── Makefile           # Build system
-└── 📚 Documentation
-    └── README.md          # This file
+
+├── README.md
+├── LICENSE
+├── Makefile
+├── highway_racing.cpp
+├── assets/
+│   ├── car.png
+│   ├── truck.png
+│   ├── road.png
+│   └── particles/
+├── photo/
+│   ├── home.png
+│   ├── gameplay.png
+│   ├── gameover.png
+│   └── banner.png
 ```
-
-## 🎯 How to Play
-
-### Controls
-- **WASD** or **Arrow Keys**: Move and accelerate/brake
-- **A/D** or **Left/Right**: Change lanes
-- **W** or **Up**: Accelerate
-- **S** or **Down**: Brake
-- **Space**: Pause game
-- **R**: Restart (when game over)
-- **ESC**: Quit
-
-### Objective
-- Navigate through traffic without crashing
-- Change lanes strategically to avoid vehicles
-- Build speed for higher scores
-- Survive as long as possible to reach higher levels
-
-### Scoring System
-- **Speed Bonus**: Higher speeds = more points per second
-- **Distance Bonus**: Points for every meter traveled  
-- **Avoidance Bonus**: Points for each vehicle successfully passed
-- **Level Multiplier**: Higher levels increase point values
-
-## 🔧 Technical Details
-
-### Web Version
-- **Technology**: HTML5 Canvas, Vanilla JavaScript
-- **Features**: WebAudio sound effects, responsive design, mobile controls
-- **Performance**: 60 FPS with optimized rendering and collision detection
-- **Compatibility**: Modern browsers (Chrome, Firefox, Safari, Edge)
-
-### C++ Version  
-- **Technology**: SFML 2.5+ (Graphics, Audio, System)
-- **Performance**: Native performance with hardware acceleration
-- **Features**: Particle system, advanced physics, better visual effects
-- **Platforms**: Windows, Linux, macOS
-
-### Mathematical Traffic Generation
-
-The game uses sophisticated algorithms for realistic traffic patterns:
-
-```cpp
-// Weighted random vehicle selection
-float calculateSpawnProbability(VehicleType type, int level, float playerSpeed) {
-    float baseRate = type.spawnWeight;
-    float speedFactor = playerSpeed / maxPlayerSpeed;
-    float levelFactor = 1.0f + level * 0.1f;
-    
-    return baseRate * speedFactor * levelFactor;
-}
-
-// Dynamic difficulty scaling
-float getTrafficDensity(int level, float distance) {
-    return baseSpawnRate + (level * 0.005f) + (distance / 10000.0f);
-}
-```
-
-## 🛠️ Building and Installation
-
-### Dependencies
-
-#### For C++ Version:
-- **SFML 2.5+** (Graphics, Window, System, Audio)
-- **C++17 compatible compiler** (GCC 7+, Clang 5+, MSVC 2017+)
-
-#### For Web Version:
-- **Web Server** (Python 3, Node.js, or any HTTP server)
-- **Modern Browser** with HTML5 Canvas support
-
-### Build Instructions
-
-#### Ubuntu/Debian
-```bash
-# Install dependencies
-sudo apt-get install libsfml-dev build-essential
-
-# Build and run
-make setup-ubuntu
-```
-
-#### macOS
-```bash  
-# Install dependencies (requires Homebrew)
-brew install sfml
-
-# Build and run
-make setup-macos
-```
-
-#### Windows
-1. Install SFML from https://www.sfml-dev.org/
-2. Configure your IDE with SFML paths
-3. Compile `highway_racing.cpp` with SFML libraries
-
-#### Manual Build
-```bash
-g++ -std=c++17 highway_racing.cpp -o highway_racing -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-```
-
-## 🎮 Game Mechanics Deep Dive
-
-### Physics System
-- **Acceleration**: Realistic car acceleration curves
-- **Lane Changing**: Smooth interpolation between lanes  
-- **Speed Effects**: Visual feedback for high speeds
-- **Collision**: Precise bounding box detection
-
-### Traffic AI
-Each vehicle type has unique behavior:
-- **Speed Variation**: Randomized within realistic ranges
-- **Lane Oscillation**: Subtle movements for realism
-- **Spawn Patterns**: Avoid clustering, maintain challenge
-
-### Difficulty Progression
-- **Level 1**: Sparse traffic, slow speeds
-- **Level 5**: Moderate density, mixed vehicle types
-- **Level 10+**: Dense traffic, fast vehicles, frequent lane changes required
-
-## 📊 Performance Optimizations
-
-### Web Version
-- **Object Pooling**: Reuse vehicle objects to reduce garbage collection
-- **Culling**: Only update/render vehicles on screen
-- **Efficient Canvas API**: Minimized draw calls and state changes
-- **Frame Rate**: Consistent 60 FPS with automatic quality scaling
-
-### C++ Version
-- **Memory Management**: Smart pointers and RAII patterns
-- **Vector Operations**: SIMD-optimized math where possible
-- **Render Batching**: Group similar draw calls
-- **Particle Limits**: Dynamic particle count based on performance
-
-## 🐛 Troubleshooting
-
-### C++ Version Issues
-
-**"SFML not found" error:**
-```bash
-# Ubuntu/Debian
-sudo apt-get install libsfml-dev
-
-# macOS
-brew install sfml
-
-# Check installation
-pkg-config --libs sfml-graphics
-```
-
-**Compilation errors:**
-```bash
-# Ensure C++17 support
-g++ --version  # Should be 7.0+
-
-# Check SFML version
-pkg-config --modversion sfml-graphics  # Should be 2.5+
-```
-
-### Web Version Issues
-
-**Blank screen in browser:**
-- Check browser console for JavaScript errors
-- Ensure you're serving from a web server (not file://)
-- Try a different browser
-
-**Poor performance:**
-- Close other browser tabs
-- Check if hardware acceleration is enabled
-- Reduce browser zoom level
-
-## 🤝 Contributing
-
-We welcome contributions! Areas for improvement:
-
-- **New Vehicle Types**: Add motorcycles, buses, emergency vehicles
-- **Power-ups**: Speed boosts, shields, extra lives  
-- **Weather Effects**: Rain, fog, night mode
-- **Sound Design**: Engine sounds, crash effects, music
-- **Track Variants**: Curves, hills, multiple highways
-
-### Development Setup
-```bash
-# Clone repository
-git clone <repository-url>
-cd 3-lane-highway-racing
-
-# Test both versions
-make test
-
-# Create development build
-make debug
-```
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **SFML Team**: For the excellent multimedia library
-- **Game Design Inspiration**: Classic arcade racing games like OutRun and Highway Hunter  
-- **Mathematical Models**: Traffic flow dynamics research papers
-- **Testing Community**: Beta testers who provided valuable feedback
-
-## 📞 Support
-
-Having issues? Check these resources:
-
-1. **Build Problems**: See troubleshooting section above
-2. **Gameplay Questions**: Check the controls and objective sections  
-3. **Performance Issues**: Try the optimization suggestions
-4. **Bug Reports**: Create an issue with detailed steps to reproduce
 
 ---
 
-**🏁 Ready to Race?**
+# Installation
 
-```bash
-# For instant action:
-make web
+## Prerequisites
 
-# For best experience:  
-make setup-ubuntu  # or setup-macos
-make run-cpp
-```
-
-Hit the highway and see how long you can survive! 🏎️💨
+- C++17 Compiler
+- SFML 2.5+
+- Make
 
 ---
 
-## Patch Notes (local)
+## Build
 
-- Fixed a compile issue in `highway_racing.cpp`: corrected the `VehicleType` initializer order, defined `M_PI` for portability, and made `TrafficVehicle::render` const to allow rendering from a const reference. The project now compiles with g++ and SFML.
+Ubuntu
+
+```bash
+sudo apt install libsfml-dev
+
+make
+```
+
+Windows
+
+Configure SFML libraries inside Visual Studio or CodeBlocks and build the project.
+
+---
+
+## Run
+
+```bash
+./highway_racing
+```
+
+---
+
+# Game Controls
+
+| Key | Action |
+|------|--------|
+| ← | Move Left |
+| → | Move Right |
+| ↑ | Accelerate |
+| ↓ | Brake |
+| Space | Pause |
+| R | Restart |
+| ESC | Exit |
+
+---
+
+# Gameplay
+
+The objective is to survive as long as possible by avoiding incoming vehicles.
+
+The player gains points by
+
+- Travelling longer distance
+- Maintaining higher speed
+- Successfully overtaking traffic
+- Reaching higher levels
+
+As the level increases
+
+- Traffic density increases
+- Vehicle speed increases
+- Spawn frequency increases
+- Difficulty becomes more challenging
+
+---
+
+# Game Mechanics
+
+## Vehicle Types
+
+- Compact Cars
+- Sedans
+- SUVs
+- Sports Cars
+- Heavy Trucks
+
+Each vehicle has different
+
+- Speed
+- Size
+- Spawn probability
+- Score value
+
+---
+
+# Mathematical Model
+
+Traffic generation follows weighted probability.
+
+```
+Spawn Rate
+
+↓
+
+Vehicle Selection
+
+↓
+
+Lane Selection
+
+↓
+
+Collision Safety Check
+
+↓
+
+Spawn Vehicle
+```
+
+Difficulty scaling is based on
+
+- Current Level
+- Player Speed
+- Distance Travelled
+
+---
+
+# Screenshots
+
+## Home Screen
+
+![](photo/home.png)
+
+---
+
+## Gameplay
+
+![](photo/gameplay.png)
+
+---
+
+## Game Over
+
+![](photo/gameover.png)
+
+---
+
+# Results
+
+The project demonstrates
+
+- Object-Oriented Programming
+- Real-time Game Loop
+- SFML Graphics Programming
+- Collision Detection
+- Mathematical Traffic Simulation
+- Keyboard Event Handling
+- Procedural Content Generation
+- Desktop Game Development
+
+---
+
+# Future Scope
+
+Possible improvements
+
+- Multiplayer Mode
+- Online Leaderboard
+- Garage System
+- Vehicle Upgrades
+- Weather Effects
+- Night Mode
+- AI Opponent Vehicles
+- Soundtrack
+- Multiple Maps
+- Save Game Feature
+
+---
+
+# Author
+
+**Krishna Ghute**
+
+💼 LinkedIn
+
+https://www.linkedin.com/in/krishna-ghute-b72199370/
+
+💻 GitHub
+
+https://github.com/KrishnaGhute
+
+📊 Kaggle
+
+https://www.kaggle.com/krishnaghuteds
+
+📸 Instagram
+
+https://www.instagram.com/krishna_ghute_ds/
+
+▶️ YouTube
+
+https://www.youtube.com/@Krishna_Ghute
+
+---
+
+# License
+
+This project is intended for educational and portfolio purposes.
+
+See the **LICENSE** file for usage terms.
+
+---
+
+<p align="center">
+
+**3-Lane Highway Racing Game**
+
+Designed using **C++**, **SFML**, and modern game programming principles.
+
+</p>
