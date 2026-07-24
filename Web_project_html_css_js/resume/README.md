@@ -135,7 +135,7 @@ https://github.com/KrishnaGhute
 
 ## License
 
-No license file was found in the repository. The repository currently does not declare a project license.
+No license.
 
 ---
 
