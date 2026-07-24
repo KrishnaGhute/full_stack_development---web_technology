@@ -151,7 +151,23 @@ g++ -std=c++17 -O2 -o truck_backend truck_dealership_backend.cpp -lpthread
 
 > Screenshots section placeholder. Add actual UI screenshots here for a more polished repository presentation.
 
-![Screenshot Placeholder](https://via.placeholder.com/1200x700?text=TruckHub+Screenshot)
+### Home
+![Screenshot Placeholder](photo/home.png)
+
+### Gallery
+![Screenshot Placeholder](photo/gallery.png)
+
+### Compare
+![Screenshot Placeholder](photo/compare.png)
+
+### Loan & EMI Calculator
+![Screenshot Placeholder](photo/loan & emi.png)
+
+### Booking
+![Screenshot Placeholder](photo/booking.png)
+
+### Contact
+![Screenshot Placeholder](photo/contact.png)
 
 ## Results
 
@@ -175,7 +191,24 @@ Potential future enhancements include:
 
 ## Author
 
-Created as a frontend + C++ backend portfolio project.
+**Krishna Ghute**
+
+- Email: krishnavijayghute@gmail.com
+
+💼 LinkedIn
+https://www.linkedin.com/in/krishna-ghute-b72199370/
+
+▶️ YouTube
+https://www.youtube.com/@Krishna_Ghute
+
+📸 Instagram
+https://www.instagram.com/krishna_ghute_ds/
+
+📊 Kaggle
+https://www.kaggle.com/krishnaghuteds
+
+💻 GitHub
+https://github.com/KrishnaGhute
 
 ## License
 
