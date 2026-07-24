@@ -39,7 +39,7 @@ Swaad Ghar is a restaurant and recipe management website developed using PHP, My
 The project demonstrates complete full-stack web development fundamentals including user authentication, database connectivity, session management, and responsive frontend design.
 
 <p align="center">
-<img src="menu/image/home.png" width="90%">
+<img src="swadghar_website_php_backend/menu/image/home.png" width="90%">
 </p>
 
 ### Highlights
@@ -67,11 +67,11 @@ The project demonstrates complete full-stack web development fundamentals includ
 # Repository Structure
 
 ```text
-php_projects/
+web_project_PHP_backend/
 │
 ├── README.md
 │
-├── swaad_ghar/
+├── swadghar_website_php_backend/
     ├── README.md
     └── ...
 
