@@ -1,62 +1,156 @@
 # GK Transports - Tata Truck Dealership Website
 
-This project is a comprehensive dealership website for GK Transports, an authorized Tata Motors commercial vehicle dealer. It serves as a digital showroom allowing customers to browse truck models, compare specifications, calculate loan EMIs, book services, and purchase parts.
+<p align="center">
+  <img src="https://via.placeholder.com/1200x400.png?text=GK+Transports+Project+Banner" alt="GK Transports Project Banner" width="100%" />
+</p>
 
-## 🚀 Features
+<p align="center">
+  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img alt="Static Site" src="https://img.shields.io/badge/Type-Static%20Frontend-38B2AC?style=for-the-badge" />
+  <img alt="Status" src="https://img.shields.io/badge/Status-Prototype%20Website-4CAF50?style=for-the-badge" />
+</p>
 
-### 🚛 Digital Showroom & Inventory
-- **Interactive Gallery:** Moving carousel showcasing latest truck models (Prima, Signa, LPT series).
-- **Detailed Specifications:** Comprehensive breakdown of engine specs, GVW, payload, and pricing for each model.
-- **Live Stock Status:** Real-time availability table indicating 'In Stock' or 'Out of Stock' status.
-- **Comparison Tool:** Side-by-side comparison feature to evaluate different truck models based on engine, mileage, and price.
+A responsive, customer-facing dealership website for showcasing Tata commercial trucks, finance estimates, service booking, and parts browsing through a polished static frontend experience.
 
-### 💰 Financial Tools
-- **EMI Calculator:** Built-in tool for estimating monthly loan payments based on truck price, interest rate, and tenure.
+## Overview
 
-### 🛠️ Services & Parts
-- **Service Booking:** Integrated form for scheduling truck maintenance and service appointments.
-- **Parts & Accessories Store:** E-commerce functionality for browsing and adding genuine parts (filters, tyres, kits) to a cart.
-- **Installation Booking:** Option to schedule installation appointments for purchased accessories.
+GK Transports is a dealership website prototype designed to present Tata truck models in a clean digital showroom format. The project focuses on product visibility, customer engagement, and lead-generation-style interactions through a single-page frontend interface.
 
-### 📍 Location & Tracking
-- **Interactive Map:** Embedded Google Map showing the showroom location in Aurangabad.
-- **GPS Tracking Info:** Information about live GPS-enabled delivery tracking for customers.
+The implementation is built using plain HTML, CSS, and JavaScript, with no backend or database layer. As a result, it serves as a frontend showcase and UX prototype rather than a full production commerce system.
 
-### 📱 User Experience
-- **Responsive Design:** Fully optimized for desktops, tablets, and mobile devices.
-- **Floating Social Links:** Quick access buttons for WhatsApp, Instagram, and LinkedIn.
-- **FAQ Section:** Accordion-style frequently asked questions for quick customer support.
-- **Contact Form:** Direct inquiry form for customer queries.
+## Features
 
-## 🛠️ Technical Details
+- Interactive sidebar navigation
+- Embedded YouTube introduction section
+- Auto-scrolling truck gallery
+- Detailed truck model cards with specifications and pricing
+- Stock availability status table
+- EMI calculator for financing estimation
+- Truck comparison section
+- Service booking form
+- Parts and accessories gallery
+- Client-side cart summary
+- Installation booking section
+- Embedded showroom map
+- FAQ accordion
+- Floating social action buttons for WhatsApp, Instagram, and LinkedIn
 
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **Styling:** Custom CSS with responsive media queries, Flexbox, and Grid layouts.
-- **Icons & Fonts:** Google Fonts (Poppins), Flaticon icons.
-- **External Integrations:** Google Maps Embed API, YouTube Embed API.
+## Tech Stack
 
-## 📂 Project Structure
+### Frontend
+- HTML5
+- CSS3
+- Vanilla JavaScript
 
+### External Integrations
+- Google Fonts
+- Google Maps Embed
+- YouTube Embed
+- External media assets from public image URLs
+
+### Notes
+- No framework is used.
+- No backend service is present.
+- No database is configured in the current repository.
+
+### High-Level Flow
+
+1. The user opens the website in a browser.
+2. The HTML structure renders the dealership layout.
+3. CSS controls styling and responsiveness.
+4. JavaScript powers the interactive experience, including:
+   - menu toggle
+   - EMI calculation
+   - cart logic
+   - FAQ interaction
+   - comparison output
+
+## Folder Structure
+
+```text
+.
+├── README.md
+└── truck_dealer_website.html
 ```
-/
-├── index.html          # Main single-page application
-├── assets/            # (Conceptual) Directory for images and icons
-└── README.md          # Project documentation
+
+### File Description
+
+- `README.md` — repository documentation
+- `truck_dealer_website.html` — the complete single-file frontend implementation containing markup, styles, and scripts
+
+## Installation
+
+### Prerequisites
+
+- A modern web browser such as Chrome, Edge, Firefox, or Safari
+
+### Steps
+
+1. Clone or download the repository.
+2. Open `truck_dealer_website.html` in your browser.
+3. Optionally, serve it locally using:
+
+```bash
+python -m http.server 8000
 ```
 
-## 🚀 How to Run
+Then visit:
 
-1. **Clone the repository** or download the project files.
-2. **Open `index.html`** in any modern web browser (Chrome, Firefox, Edge, etc.).
-3. No server setup is required for the frontend interface (static site).
+```text
+http://localhost:8000
+```
 
-## 📞 Contact Information
+## Usage
 
-**GK Transports**  
-Authorized Tata Motors Dealer  
-📍 Aurangabad, Maharashtra  
-📧 Email: contact@gktransports.com  
-📱 Phone: +91-9999999999
+Once the page is opened:
+
+1. Navigate between sections using the menu button.
+2. Explore truck models and specifications.
+3. Use the finance calculator to estimate monthly EMI.
+4. Compare different models.
+5. Add accessories to the cart.
+6. Book service or installation.
+7. Review location, FAQ, and contact information.
+
+## Screenshots
+
+<p align="center">
+  <img src="https://via.placeholder.com/1200x700.png?text=Website+Screenshot+Placeholder" alt="Website Screenshot Placeholder" width="100%" />
+</p>
+
+## Results
+
+This project delivers a clean and interactive dealership landing page experience with:
+
+- strong visual branding
+- customer-focused information flow
+- static UI interactivity
+- lead-generation style presentation
+
+It is well-suited as a portfolio project, prototype, or educational frontend example.
+
+## Future Scope
+
+- Add a real backend for form submissions and inventory data
+- Replace hardcoded demo content with a managed database
+- Add user authentication for admin or dealership staff
+- Integrate payment processing for accessories
+- Introduce search, filters, and product sorting
+- Deploy to GitHub Pages, Netlify, or Vercel
+- Add analytics for traffic and lead tracking
+
+## Author
+
+GK Transports
+
+## License
+
+No license file was found in the repository. License information is currently not specified.
 
 ---
-*© 2025 GK Transports. All Rights Reserved.*
+
+<p align="center">
+  <strong>Built with HTML, CSS, and JavaScript for a polished dealership showcase experience.</strong>
+</p>
