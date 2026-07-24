@@ -114,15 +114,13 @@ A desktop arcade racing game developed using C++ and SFML that focuses on real-t
 ## Development Tools
 
 - Visual Studio Code
-- GCC / G++
-- Makefile
 
 ---
 
 # Repository Structure
 
 ```text
-cpp_projects/
+web_project_cpp_backend/
 │
 ├── README.md
 │
