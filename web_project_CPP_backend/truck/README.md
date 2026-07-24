@@ -1,92 +1,188 @@
-# TruckHub — Truck Dealership Web App
+# TruckHub 🚛
 
-## Project Title
+<p align="center">
+  <img src="https://img.shields.io/badge/C%2B%2B-17-blue.svg" alt="C++17" />
+  <img src="https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JS-orange.svg" alt="Frontend" />
+  <img src="https://img.shields.io/badge/Backend-httplib-green.svg" alt="httplib" />
+  <img src="https://img.shields.io/badge/Status-Demo%20Project-lightgrey.svg" alt="Status" />
+</p>
 
-TruckHub — Truck Dealership Web App
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#tech-stack">Tech Stack</a> ·
+  <a href="#installation">Installation</a> ·
+  <a href="#usage">Usage</a>
+</p>
 
-## Description
+## Project Banner
 
-TruckHub is a small web application demonstrating a static frontend (HTML/CSS/JavaScript) connected to a server-side backend. The backend in this repository is implemented in C++ for business logic and exposes JSON APIs for the frontend to consume. The project shows a simple booking and contact flow for a truck dealership.
+> Placeholder for a project banner or hero image.
 
-## Technologies Used
+![Project Banner Placeholder](https://via.placeholder.com/1200x400?text=TruckHub+Project+Banner)
 
-- HTML
-- CSS
-- JavaScript
-- C++ (backend)
-- JSON (data interchange)
+## Overview
 
-## Installation
+TruckHub is a dealership-style web project that demonstrates a static frontend connected to a C++ backend. The repository contains a multi-page truck dealership website, a C++ server implementing inventory and business logic, and a lightweight JSON API layer for truck browsing, EMI calculation, comparison, and contact processing.
 
-These instructions assume you want to run the project locally.
-
-1. Clone or copy the repository to your machine.
-2. Frontend: the static files are in `truck_frontend/`. You can open `index.html` directly in the browser for a static preview.
-3. Backend (C++): build and run the backend server. Example steps below use a typical Linux-like toolchain; on Windows you can build with Visual Studio or MinGW.
-
-Example (Linux / macOS with g++ and make):
-
-```bash
-# From project root (adjust paths as needed)
-cd backend
-make        # if a Makefile exists; otherwise compile the C++ server manually
-# or compile manually (example):
-g++ -std=c++17 -O2 -o truck_backend truck_dealership_backend.cpp -lpthread
-./truck_backend
-```
-
-If your backend binds to a port (e.g. `http://localhost:8080`), make sure that port is available and the frontend fetch calls point to the correct base URL.
-
-## Usage
-
-- Start the backend server (see build/run commands above).
-- Open the frontend files in a browser (`truck_frontend/index.html`), or serve them with a static server (e.g. `npx http-server` or a local web server) so network requests are allowed.
-- Use the UI to submit a booking or contact request. The frontend will POST JSON to the backend API and display the response.
-
-Example run (serving frontend with a simple Node static server):
-
-```bash
-# install http-server if needed
-npx http-server truck_frontend -p 3000
-# then open http://localhost:3000 in your browser
-```
+This project is best understood as a prototype or learning-oriented application rather than a production-ready commercial platform.
 
 ## Features
 
-- Responsive static frontend with pages for gallery, finance, compare, contact and booking.
-- Booking form that validates input client-side and POSTs JSON to the backend API.
-- Contact form that POSTs messages to the backend.
-- Backend implemented in C++ exposing JSON REST endpoints for receiving bookings and contact messages.
+- Responsive multi-page dealership frontend
+- Gallery-based truck browsing experience
+- Finance and EMI calculation workflow
+- Truck comparison logic with recommendation output
+- Contact submission handling
+- In-memory truck inventory dataset
+- JSON API endpoints powered by a C++ HTTP backend
+
+## Tech Stack
+
+### Programming Languages
+- C++
+- HTML
+- CSS
+- JavaScript
+
+### Frameworks
+- No dedicated framework is configured in the repository.
+
+### Libraries
+- `httplib.h` for lightweight HTTP server support
+
+### Databases
+- No database implementation was found in the repository.
+
+### APIs
+- `/getTrucks`
+- `/calculateEMI`
+- `/compare`
+- `/contact`
+- `/getAvailability`
+
+### Deployment Platforms
+- No deployment configuration or cloud platform files were found.
+
+### Development Tools
+- Visual Studio C++ workspace settings
+- Browser-based frontend development
+- C++ compiler toolchain
+
+## Architecture Diagram
+
+```mermaid
+flowchart LR
+    A[Browser User] --> B[Static Frontend\nHTML/CSS/JS]
+    B --> C[TruckHub JavaScript Logic]
+    C --> D[C++ Backend Server]
+    D --> E[Business Logic\nInventory / EMI / Comparison / Contact]
+    E --> F[JSON Responses]
+    F --> B
+```
 
 ## Folder Structure
 
-- `truck_frontend/` — HTML, CSS and JavaScript frontend files.
-  - `index.html`, `gallery.html`, `contact.html`, `signup.html` (repurposed as booking), etc.
-  - `booking.js` — client-side booking logic.
-- `backend/` — backend sources and server (C++):
-  - `truck_dealership_backend.cpp` — main C++ backend server source.
-  - (optional) server config and supporting PHP endpoints if present in this repo.
-- `logs/` — application logs (if server writes logs here).
-- `README.md` — this file.
+```text
+truck/
+├── README.md
+├── httplib.h
+├── truck_dealership_backend.cpp
+├── truck_dealership_server.exe
+└── truck_frontend/
+    ├── index.html
+    ├── gallery.html
+    ├── finance.html
+    ├── compare.html
+    ├── contact.html
+    ├── signup.html
+    ├── script.js
+    ├── booking.js
+    └── styles.css
+```
 
-## Contributing
+### Folder Details
 
-Contributions are welcome. Suggested workflow:
+- `truck_frontend/` – static website pages and frontend assets
+- `truck_dealership_backend.cpp` – main C++ backend and HTTP endpoint implementation
+- `httplib.h` – HTTP library header used by the backend
+- `truck_dealership_server.exe` – compiled Windows executable
 
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feat/your-feature`.
-3. Make your changes and test locally.
-4. Commit, push, and open a Pull Request describing your changes.
+## Installation
 
-Please follow these guidelines:
-- Keep changes small and focused.
-- Write clear commit messages.
-- Ensure the frontend and backend remain decoupled via JSON APIs.
+### Prerequisites
+
+- A C++ compiler such as `g++` or Visual Studio C++ tools
+- A browser for viewing the frontend pages
+
+### Build the Backend
+
+From the project root, compile the C++ server with:
+
+```bash
+g++ -std=c++17 -O2 -o truck_backend truck_dealership_backend.cpp -lpthread
+```
+
+### Run the Backend
+
+```bash
+./truck_backend
+```
+
+The backend listens on port `8080` and serves JSON endpoints for the frontend.
+
+## Usage
+
+1. Start the C++ backend server.
+2. Open the frontend pages from `truck_frontend/` in a browser.
+3. Browse trucks, calculate EMI, compare models, or submit contact requests.
+
+### Example
+
+```bash
+# Compile backend
+g++ -std=c++17 -O2 -o truck_backend truck_dealership_backend.cpp -lpthread
+
+# Run backend
+./truck_backend
+```
+
+## Screenshots
+
+> Screenshots section placeholder. Add actual UI screenshots here for a more polished repository presentation.
+
+![Screenshot Placeholder](https://via.placeholder.com/1200x700?text=TruckHub+Screenshot)
+
+## Results
+
+The project demonstrates the following outcomes:
+
+- A clean dealership-style frontend with multiple pages
+- C++-based business logic for truck inventory and customer workflows
+- JSON API response handling for frontend consumption
+- A prototype architecture suitable for portfolio and learning demonstrations
+
+## Future Scope
+
+Potential future enhancements include:
+
+- Replacing simulated frontend API responses with fully wired live requests
+- Adding persistent storage for bookings and contact data
+- Introducing a real database layer
+- Adding admin inventory management
+- Improving deployment automation and containerization
+- Expanding the UI into a full commercial dealership platform
+
+## Author
+
+Created as a frontend + C++ backend portfolio project.
 
 ## License
 
-Add license information here (e.g., MIT, Apache-2.0). Replace this placeholder with the actual license text or file.
+No license file was found in the repository. Please add an appropriate open-source license before public distribution.
 
 ---
 
-If you want, I can also generate a `backend/README.md` with build flags and a sample `Makefile` for the C++ server, or create a small script to run the backend and a static file server together.
+<p align="center">
+  <strong>TruckHub</strong> · Designed for dealership demos, C++ backend exploration, and portfolio presentation.
+</p>
